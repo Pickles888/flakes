@@ -1,0 +1,2 @@
+# flakes
+my nix config
