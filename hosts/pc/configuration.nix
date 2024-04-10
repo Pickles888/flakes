@@ -1,22 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
-{
-  imports = [
-      ./hardware-configuration.nix
-      ./main.nix
-  ];
-  
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];  
-  networking.hostName = "nixos";
-  
-  console = {
-    useXkbConfig = true;
-  };
+  bluetooth.enable = true;
+  grub.enable = true;
+  workman.enable = true;
 
-  system.autoUpgrade = {
-    enable = true;
-    channel = https://nixos.org/channels/nixos-unstable;
-  };
-
-  system.stateVersion = "23.11"; # DO NOT TOUCH
+  networking.hostName = "pc";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  system.stateVersion = "23.11";
 }

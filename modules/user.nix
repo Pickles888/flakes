@@ -6,7 +6,7 @@
     users.asynth = {
       isNormalUser = true;
       description = "asynth";
-      extraGroups = [ "networkmanager" "wheel" "audio" "networkmanager" "lp" "scanner" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" "networkmanager" "lp" "scanner" "libvirtd" ];
     };
   };
 }

@@ -2,19 +2,21 @@
 
 {
   imports = [
-    ./modules/bluetooth.nix
-    ./modules/environment.nix
-    ./modules/location.nix
-    ./modules/services.nix
-    ./modules/boot.nix
-    ./modules/firewall.nix
-    ./modules/sound.nix
-    ./modules/dm.nix
-    ./modules/keyboard.nix
-    ./modules/user.nix
+    ./environment.nix
+    ./location.nix
+    ./boot.nix
+    ./keyboard.nix
+    ./user.nix
+    ./misc.nix
+    ./services/bluetooth.nix
+    ./services/sound.nix
+    ./services/general.nix
+    ./services/getty.nix
     ./packages/fonts.nix
-    ./packages/packages.nix
-    ./modules/programs/general.nix
-    ./modules/programs/zsh.nix
+    ./packages/base.nix
+    ./packages/options.nix
+    ./programs/general.nix
+    ./programs/zsh.nix
+    ./programs/steam.nix
   ];
 }
