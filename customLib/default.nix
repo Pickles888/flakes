@@ -1,7 +1,12 @@
-{ inputs, home-manager }: rec {
-  mkSystem = system: config: home-managerConfig:
+{ inputs, home-manager }:
+let
+  outputs = inputs.self.outputs;
+  customLib = (import ./default.nix) { inherit inputs; };
+in rec {
+  mkSystem = system: config: home-managerConfig: specialArgs:
     inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = specialArgs;
+
       system = system;
       modules = [
         config
@@ -10,7 +15,8 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = { inherit inputs customLib; };
+
           home-manager.users.asynth = import home-managerConfig;
         }
       ];

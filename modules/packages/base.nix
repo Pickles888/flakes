@@ -19,6 +19,7 @@
         brightnessctl
         discord
         wofi
+        pavucontrol
         waybar
         swaybg
         libnotify
@@ -30,7 +31,6 @@
     {
       environment.systemPackages = with pkgs; [
         eza
-        vim
         wget
         fastfetch
         git

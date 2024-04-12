@@ -48,7 +48,7 @@
         blur = {
           enabled = true;
           size = "4";
-          passes = "3";
+          passes = "5";
         };
 
         drop_shadow = "no";

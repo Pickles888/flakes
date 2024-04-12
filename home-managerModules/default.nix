@@ -1,4 +1,4 @@
-{ config, osConfig, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ./gtk.nix
     ./cursor.nix
@@ -6,6 +6,12 @@
     ./helix.nix
     ./hyprland.nix
     ./homePackages.nix
+    ./anyrun.nix
+    ./git.nix
+    ./swaync.nix
+    ./hyprlock.nix
+    ./hypridle.nix
+    ./fastfetch.nix
   ];
 
   home = {

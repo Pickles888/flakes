@@ -22,6 +22,7 @@
       ls = "eza --icons -F -H --group-directories-first --git -1";
       lsa = "eza --icons -F -H --group-directories-first --git -1 -T";
       nx = "sudo -E hx /etc/nixos";
+      dev = "nix-shell";
     };
   };
 }
