@@ -24,12 +24,16 @@
         #"GTK_THEME,${config.gtk.theme.name}"
       ];
 
-      exec-once =
-        [ "swaybg -i /etc/nixos/assets/evening-sky.png" "swaync" "hypridle" ];
+      exec-once = [
+        "swaybg -i /etc/nixos/assets/evening-sky.png"
+        "swaync"
+        "hypridle"
+        "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
+      ];
 
       input = {
-        kb_layout = "us";
-        kb_variant = "workman";
+        kb_layout = "us,us";
+        kb_variant = "workman,,";
         follow_mouse = "1";
         accel_profile = "flat";
         sensitivity = "0.2";
@@ -86,6 +90,7 @@
       bind = [
         "$mainMod, F, fullscreen,"
         "$mainMod, RETURN, exec, kitty"
+        "ALT, SPACE, exec, hyprctl switchxkblayout kbdfans-og60-keyboard next"
         "$mainMod, N, exec, firefox"
         "$mainMod, A, exec, swaync-client -t"
         "$mainMod, Q, killactive,"

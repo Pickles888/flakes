@@ -1,4 +1,13 @@
-{ config, ... }: {
+{ config, ... }:
+let
+  initScript = ''
+    if [ $(tty) = /dev/tty1 ]; then
+      exec Hyprland
+    else
+      fastfetch
+    fi
+  '';
+in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -8,13 +17,7 @@
       PS1="%{%F{blue}%}%{%K{blue}%}%{%F{black}%} %m%{%K{black}%}%{%F{blue}%} %/%{%F{black}%}%{%k%}
       %{%F{blue}%} 󰅷 %{%F{white}%}"
     '';
-    interactiveShellInit = ''
-      if [ $(tty) = /dev/tty1 ]; then
-        exec Hyprland
-      else
-        fastfetch
-      fi
-    '';
+    interactiveShellInit = initScript;
     shellAliases = {
       rx = "sudo -E hx";
       rebuild = "sudo nixos-rebuild";

@@ -7,11 +7,11 @@
       description = "enable workman keyboard layout";
     };
   };
-  
+
   config = lib.mkIf config.workman.enable {
     services.xserver.xkb = {
-        layout = "us";
-        variant = "workman";
+      layout = "us";
+      variant = "workman";
     };
   };
 }

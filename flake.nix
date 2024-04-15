@@ -8,22 +8,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-ld = {
-      url = "github:Mic92/nix-ld";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixpkgs-olympus.url = "github:UlyssesZh/nixpkgs/olympus";
   };
 
-  outputs = { nixpkgs, nixpkgs-olympus, nix-ld, home-manager, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-olympus, home-manager, ... }@inputs:
     let
       customLib =
         import ./customLib/default.nix { inherit inputs home-manager; };
     in with customLib; {
       nixosConfigurations = {
         pc = mkSystem "x86_64-linux" ./hosts/pc/configuration.nix
-          ./hosts/pc/home.nix { inherit inputs customLib nix-ld; };
+          ./hosts/pc/home.nix { inherit inputs customLib; };
+
+        liveiso = mkSystem "x86_64-linux" ./hosts/liveiso/configuration.nix
+          ./hosts/liveiso/home.nix { inherit inputs; };
       };
 
       home-managerModules.default = ./home-managerModules;

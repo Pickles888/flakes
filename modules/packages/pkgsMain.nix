@@ -1,44 +1,23 @@
-{ config, pkgs, lib, inputs, ... }: {
+{ config, pkgs, lib, inputs, ... }:
+let
+  guiPackages = import ./guiPackages.nix { inherit pkgs; };
+  basePackages = import ./basePackages.nix { inherit pkgs; };
+in {
   options = {
-    guiPackages.enable = lib.mkEnableOption {
+    packages.guiPackages.enable = lib.mkEnableOption {
       description = "Enables GUI Packages";
+      default = true;
+    };
+
+    packages.basePackages.enable = lib.mkEnableOption {
+      description = "Enbles base Packages";
       default = true;
     };
   };
 
   config = lib.mkMerge [
-    {
-      environment.systemPackages = with pkgs; [
-        swaynotificationcenter
-        cava
-        cider
-        obsidian
-        firefox
-        hypridle
-        hyprlock
-        brightnessctl
-        discord
-        wofi
-        pavucontrol
-        waybar
-        swaybg
-        libnotify
-        gnome.nautilus
-        #inputs.nixpkgs-olympus.packages.${pkgs.system}.olympus
-      ];
-    }
-
-    {
-      environment.systemPackages = with pkgs; [
-        eza
-        wget
-        fastfetch
-        git
-        gh
-        killall
-        libarchive
-      ];
-    }
+    { environment.systemPackages = basePackages.basePackages; }
+    { environment.systemPackages = guiPackages.guiPackages; }
   ];
 }
 

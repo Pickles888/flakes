@@ -16,6 +16,11 @@
           enable = true;
           devices = [ "nodev" ];
           efiSupport = true;
+          configurationLimit = 10;
+          theme = pkgs.sleek-grub-theme.override {
+            withStyle = "dark";
+            withBanner = "Welcome to NixOS";
+          };
         };
 
         timeout = 5;
@@ -27,7 +32,12 @@
         verbose = false;
       };
 
-      kernelParams = [ "quiet" "rd.udev.log_level=3" "udev.log_priority=3" ];
+      kernelParams = [
+        "quiet"
+        ''GRUB_CMDLINE_LINUX_DEFAULT="quiet splash sky2.disable_msi=1"''
+        "rd.udev.log_level=3"
+        "udev.log_priority=3"
+      ];
 
       consoleLogLevel = 0;
     };

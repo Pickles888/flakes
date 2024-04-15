@@ -1,3 +1,1 @@
-{ config, ... }: {
-  services.getty.autologinUser = "asynth";
-}
+{ config, lib, ... }: { services.getty.autologinUser = lib.mkDefault "asynth"; }

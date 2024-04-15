@@ -2,7 +2,7 @@
   options = {
     bluetooth.enable = lib.mkEnableOption {
       description = "Enables Bluetooth";
-      default = true;
+      default = false;
     };
   };
 
@@ -10,11 +10,7 @@
     services.blueman.enable = true;
     hardware.bluetooth = {
       enable = true;
-      settings = {
-        General = {
-          Enable = "Source,Sink,Media,Socket";
-        };
-      };
+      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
     };
   };
 }

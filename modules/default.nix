@@ -13,8 +13,8 @@
     ./services/general.nix
     ./services/getty.nix
     ./packages/fonts.nix
-    ./packages/base.nix
-    ./packages/options.nix
+    ./packages/pkgsMain.nix
+    ./packages/pkgsOptions.nix
     ./programs/general.nix
     ./programs/zsh.nix
     ./programs/steam.nix
