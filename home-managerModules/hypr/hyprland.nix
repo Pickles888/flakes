@@ -19,7 +19,7 @@ in lib.mkIf osConfig.hyprland.enable{
       ];
 
       exec-once = [
-        "swaybg -i /etc/nixos/assets/evening-sky.png"
+        "swaybg -i ${osConfig.flakePath}/assets/evening-sky.png"
         "swaync"
         "waybar"
         "hypridle"

@@ -6,7 +6,7 @@
   xdg.configFile."hypr/hyprlock.conf".text = ''
     background {
         monitor =
-        path = /etc/nixos/assets/Clearday.png   # only png supported for now
+        path = ${osConfig.flakePath}/assets/Clearday.png   # only png supported for now
         # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
         blur_passes = 0 # 0 disables blurring
         blur_size = 7
