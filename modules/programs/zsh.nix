@@ -19,7 +19,7 @@ in {
       autosuggestions.enable = true;
       interactiveShellInit = initScript;
       shellAliases = rec {
-	nxvim = "cd ${config.flakePath} && sudo nvim . && cd -";
+	cdf = "cd ${config.flakePath}";
 	c = "clear && ${fetch}";
         ls = "eza --icons -F -H --group-directories-first --git -1";
         lsa = "${ls} -T";

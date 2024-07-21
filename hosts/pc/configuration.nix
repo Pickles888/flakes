@@ -1,10 +1,8 @@
-{...}: let
-  music = import ../../secrets/music.nix {};
-in {
+{...}: {
   imports = [./hardware-configuration.nix];
 
   hostName = "NixPC"; # host name of system, same as outputs.nixosConfigurations.<name>
-  flakePath = "/home/asynth/.flakes"; # path to flakes
+  flakePath = "/home/asynth/.flakes/flakes"; # path to flakes
 
   workman.enable = true;
   vm.enable = true; # enables qemu vm
@@ -18,7 +16,7 @@ in {
   };
 
   extraAliases = {
-      rcmus = music.musicScript;
+      rcmus = "sudo sshfs -o allow_other,IdentityFile=/home/asynth/.ssh/id_rsa pickles@192.168.7.124:/home/pickles/music /home/asynth/Music && cmus";
   };
   
   git = {

@@ -1,11 +1,11 @@
 {
-  config, 
+  osConfig, 
   ...
 }: {
   programs.git = {
     enable = true;
-    userName = config.git.userName;
-    userEmail = config.git.userEmail;
+    userName = osConfig.git.userName;
+    userEmail = osConfig.git.userEmail;
   };
 
   programs.gh.enable = true;
