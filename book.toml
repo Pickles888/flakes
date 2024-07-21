@@ -1,0 +1,10 @@
+[book]
+authors = ["Pickles888"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Pickles888's Flake Book"
+
+[output.html.fold]
+enable = true
+level = 0

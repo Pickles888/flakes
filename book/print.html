@@ -1,0 +1,743 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Pickles888&#x27;s Flake Book</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="welcome.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="usage.html"><strong aria-hidden="true">2.</strong> Usage</a></li><li class="chapter-item "><a href="options/options.html"><strong aria-hidden="true">3.</strong> Options</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="options/ssh.html"><strong aria-hidden="true">3.1.</strong> SSH</a></li><li class="chapter-item "><a href="options/firewall.html"><strong aria-hidden="true">3.2.</strong> Firewall</a></li><li class="chapter-item "><a href="options/gui_options/gui_options.html"><strong aria-hidden="true">3.3.</strong> GUI Options</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="options/gui_options/gtk.html"><strong aria-hidden="true">3.3.1.</strong> GTK</a></li><li class="chapter-item "><a href="options/gui_options/kitty.html"><strong aria-hidden="true">3.3.2.</strong> Kitty</a></li><li class="chapter-item "><a href="options/gui_options/waybar.html"><strong aria-hidden="true">3.3.3.</strong> Waybar</a></li><li class="chapter-item "><a href="options/gui_options/hyprland/hyprland.html"><strong aria-hidden="true">3.3.4.</strong> Hyprland</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="options/gui_options/hyprland/hyprlock.html"><strong aria-hidden="true">3.3.4.1.</strong> Hyprlock</a></li><li class="chapter-item "><a href="options/gui_options/hyprland/extraConfig.html"><strong aria-hidden="true">3.3.4.2.</strong> Extra Config</a></li></ol></li><li class="chapter-item "><a href="options/gui_options/font_packages.html"><strong aria-hidden="true">3.3.5.</strong> Font Packages</a></li><li class="chapter-item "><a href="options/gui_options/cursor.html"><strong aria-hidden="true">3.3.6.</strong> Cursor</a></li></ol></li><li class="chapter-item "><a href="options/package_options.html"><strong aria-hidden="true">3.4.</strong> Package Options</a></li></ol></li><li class="chapter-item "><a href="neovim.html"><strong aria-hidden="true">4.</strong> Neovim</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Pickles888&#x27;s Flake Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="welcome"><a class="header" href="#welcome">Welcome</a></h1>
+<p>Welcome to Pickles888's flakes!</p>
+<p>If you are using them for some reason (I'm so sorry) then this is the docs!</p>
+<p>flakes url: <a href="https://github.com/Pickles888/flakes">https://github.com/Pickles888/flakes</a></p>
+<h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
+<p>If you want to add something, put in a pull request, put all added options in <code>modules/options.nix</code> and follow other general trends in the configuration</p>
+<p>Thanks :)</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="usage"><a class="header" href="#usage">Usage</a></h1>
+<p>Configure options in <code>hosts/&lt;filename&gt;/configuration.nix</code> and import the <code>hardware-configuration.nix</code> generated by NixOS.</p>
+<p>In the flake, add your hostname as configured in <code>configuration.nix</code> with the <code>hostName</code> option under nixosConfigurations with the syntax of <code>clib.mkSystem "&lt;architecture-opeating_system&gt;" hosts/&lt;filename&gt;/configuration.nix {inherit inputs nixvim clib &lt;other args&gt;;}</code></p>
+<p>The location of the configuration can be changed with the <code>flakePath</code> option.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="options"><a class="header" href="#options">Options</a></h1>
+<p>Options declared in <code>hosts/&lt;filename/configuration.nix</code></p>
+<p>GUI related options can be found in GUI Options</p>
+<h2 id="hostname"><a class="header" href="#hostname">hostName</a></h2>
+<p>System host name</p>
+<p>type: <code>String</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hostName = "NixPC";
+}
+</code></pre>
+<h2 id="flakepath"><a class="header" href="#flakepath">flakePath</a></h2>
+<p>Path to flakes</p>
+<p>type: <code>path</code></p>
+<p>default: <code>/etc/nixos</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  flakePath = /home/user/.flakes;
+}
+</code></pre>
+<h2 id="vmenable"><a class="header" href="#vmenable">vm.enable</a></h2>
+<p>Enables qemu vm</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>false</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  vm.enable = true;
+}
+</code></pre>
+<h2 id="autoupgradeenable"><a class="header" href="#autoupgradeenable">autoUpgrade.enable</a></h2>
+<p>Automatically updates the flake every day</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>false</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  autoUpgrade.enable = true;
+}
+</code></pre>
+<h2 id="extraaliases"><a class="header" href="#extraaliases">extraAliases</a></h2>
+<p>Extra aliases for the shell</p>
+<p>type: <code>attribute set</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  extraAliases = {
+    crowdstrike = "sudo rm -rf /* --no-preserve-root";
+  };
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ssh"><a class="header" href="#ssh">SSH</a></h1>
+<p>SSH options.</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  ssh = {
+    enable = true;
+    port = 23;
+  };
+}
+</code></pre>
+<h2 id="sshenable"><a class="header" href="#sshenable">ssh.enable</a></h2>
+<p>Enables ssh</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>false</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  ssh.enable = true;
+}
+</code></pre>
+<h2 id="sshport"><a class="header" href="#sshport">ssh.port</a></h2>
+<p>Port for ssh, will also open port for you</p>
+<p>type: <code>port</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  ssh.port = 23;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="firewall"><a class="header" href="#firewall">Firewall</a></h1>
+<p>Options for firewall.
+Please use this instead of <code>networking.firewall</code> for opening ports.</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  firewall = {
+    allowedTCPPorts = [ 231 4124 8080 ];
+    allowedUDPPorts = [ 3000 323 8080 ];
+  };
+}
+</code></pre>
+<h2 id="firewallallowedtcpports"><a class="header" href="#firewallallowedtcpports">firewall.allowedTCPPorts</a></h2>
+<p>Allowed TCP ports in firewall</p>
+<p>type: <code>listOf port</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  firewall.allowedTCPPorts = [ 148 4412 123 8080 ];
+}
+</code></pre>
+<h2 id="firewallallowedudpports"><a class="header" href="#firewallallowedudpports">firewall.allowedUDPPorts</a></h2>
+<p>Allowed UDP ports in firewall</p>
+<p>type: <code>listOf port</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  firewall.allowedUDPPorts = [ 123 456 8080 ];
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gui-options"><a class="header" href="#gui-options">GUI Options</a></h1>
+<p>GUI options.</p>
+<p>All of them can be turned on/off by default with the <code>gui.enable</code> option.</p>
+<h2 id="guienable"><a class="header" href="#guienable">gui.enable</a></h2>
+<p>Enables or disables GUI by default, affected options can still be changed.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>true</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  gui.enable = false;
+}
+</code></pre>
+<h2 id="ttyautologinenable"><a class="header" href="#ttyautologinenable">tty.autologin.enable</a></h2>
+<p>Autologin to the tty, used in place of display manager when GUI is in use.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  tty.autologin.enable = false;
+}
+</code></pre>
+<h2 id="printingenable"><a class="header" href="#printingenable">printing.enable</a></h2>
+<p>Enables cups (printing)</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  printing.enable = true;
+}
+</code></pre>
+<h2 id="bluetoothenable"><a class="header" href="#bluetoothenable">bluetooth.enable</a></h2>
+<p>Enables bluetooth</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  bluetooth.enable = true;
+}
+</code></pre>
+<h2 id="audioenable"><a class="header" href="#audioenable">audio.enable</a></h2>
+<p>Enables sound</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  audio.enable = true;
+}
+</code></pre>
+<h2 id="steamenable"><a class="header" href="#steamenable">steam.enable</a></h2>
+<p>Enables steam</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  steam.enable = true;
+}
+</code></pre>
+<h2 id="swayncenable"><a class="header" href="#swayncenable">swaync.enable</a></h2>
+<p>Enables sway notificaion center</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  swaync.enable = true;
+}
+</code></pre>
+<h2 id="anyrunenable"><a class="header" href="#anyrunenable">anyrun.enable</a></h2>
+<p>Enables anyrun app launcher</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  anyrun.enable = true;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gtk"><a class="header" href="#gtk">GTK</a></h1>
+<p>GTK Options.</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  gtk = {
+    enable = true;
+    fontSize = 17;
+  };
+}
+</code></pre>
+<h2 id="gtkenable"><a class="header" href="#gtkenable">gtk.enable</a></h2>
+<p>Enable GTK</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  gtk.enable = true;
+}
+</code></pre>
+<h2 id="gtkfontsize"><a class="header" href="#gtkfontsize">gtk.fontSize</a></h2>
+<p>GTK fontSize</p>
+<p>type: <code>unsigned int</code></p>
+<p>default: <code>14</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  gtk.fontSize = 12;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kitty"><a class="header" href="#kitty">Kitty</a></h1>
+<p>Options for Kitty terminal editor.</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  kitty = {
+    enable = true;
+    fontSize = 17;
+  };
+}
+</code></pre>
+<h2 id="kittyenable"><a class="header" href="#kittyenable">kitty.enable</a></h2>
+<p>Enables kitty terminal editor.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  kitty.enable = true;
+}
+</code></pre>
+<h2 id="kittyfontsize"><a class="header" href="#kittyfontsize">kitty.fontSize</a></h2>
+<p>Font size for kitty.</p>
+<p>type: <code>unsigned integer</code></p>
+<p>default: <code>15</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  kitty.fontSize = 13;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="waybar"><a class="header" href="#waybar">Waybar</a></h1>
+<p>Waybar status bar configuration.</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  waybar = {
+    enable = true;
+    size = 1;
+  };
+}
+</code></pre>
+<h2 id="waybarenable"><a class="header" href="#waybarenable">waybar.enable</a></h2>
+<p>Enables waybar.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  waybar.enable = true;
+}
+</code></pre>
+<h2 id="waybarsize"><a class="header" href="#waybarsize">waybar.size</a></h2>
+<p>Size of waybar.</p>
+<p>type: <code>unsigned int</code></p>
+<p>default: <code>2</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  waybar.size = 3;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hyprland"><a class="header" href="#hyprland">Hyprland</a></h1>
+<p>Options for Hyprland.</p>
+<h2 id="hyprlandenable"><a class="header" href="#hyprlandenable">hyprland.enable</a></h2>
+<p>Enables Hyprland.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.enable = true;
+}
+</code></pre>
+<h2 id="hyprlandsensitivity"><a class="header" href="#hyprlandsensitivity">hyprland.sensitivity</a></h2>
+<p>Hyprland's mouse sensitivity. Represented as a string because you cannot have an option with a float for some reason.</p>
+<p>type: <code>string</code></p>
+<p>default: <code>"0"</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.sensitivity = "0.2";
+}
+</code></pre>
+<h2 id="hyprlanddisplay"><a class="header" href="#hyprlanddisplay">hyprland.display</a></h2>
+<p>Hyprland's display setting.
+See: <a href="https://wiki.hyprland.org/Configuring/Monitors/">https://wiki.hyprland.org/Configuring/Monitors/</a></p>
+<p>type: <code>string</code></p>
+<p>default: <code>",preffered,auto,1"</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.display = "DP-1,1920x1080@144,0x0,1";
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hyprlock"><a class="header" href="#hyprlock">Hyprlock</a></h1>
+<p>Options for Hyprlock, the lockscreen for hyprland</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.hyprlock = {
+    enable = true;
+    asLockscreen = true;
+    timeoutSecs = (30 * 60); # 30 minutes
+  };
+}
+</code></pre>
+<h2 id="hyprlandhyprlockenable"><a class="header" href="#hyprlandhyprlockenable">hyprland.hyprlock.enable</a></h2>
+<p>Enables hyprlock.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>true</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.hyprlock.enable = true;
+}
+</code></pre>
+<h2 id="hyprlandhyprlocktimeoutsecs"><a class="header" href="#hyprlandhyprlocktimeoutsecs">hyprland.hyprlock.timeoutSecs</a></h2>
+<p>Seconds until hyprlock activates.</p>
+<p>type: <code>unsigned int</code></p>
+<p>default: <code>600</code> (10 minutes)</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.hyprlock.timeoutSecs = (15 * 60); # 15 minutes
+}
+</code></pre>
+<h2 id="hyprlandhyprlockaslockscreen"><a class="header" href="#hyprlandhyprlockaslockscreen">hyprland.hyprlock.asLockscreen</a></h2>
+<p>Start hyprlock on startup as your lockscreen.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>true</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.hyprlock.asLockscreen = true;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="extra-config-for-hyprland"><a class="header" href="#extra-config-for-hyprland">Extra Config for Hyprland</a></h1>
+<p>Extra config for Hyprland.</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.extraConfig = {
+    startupApps = [ "firefox" "steam -silent"];
+    binds = [ "$mainMod, B, exec, steam" ];
+    windowRules = [ "float,^(kitty)$" ];
+  };
+}
+</code></pre>
+<h2 id="hyprlandextraconfigstartupapps"><a class="header" href="#hyprlandextraconfigstartupapps">hyprland.extraConfig.startupApps</a></h2>
+<p>Extra apps to start with Hyprland.</p>
+<p>type: <code>listOf string</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.extraConfig.startupApps = [ "firefox" "steam -silent"];
+}
+</code></pre>
+<h2 id="hyprlandextraconfigwindowrules"><a class="header" href="#hyprlandextraconfigwindowrules">hyprland.extraConfig.windowRules</a></h2>
+<p>Extra window rules for Hyprland.</p>
+<p>type: <code>listOf string</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.extraConfig.windowRules = [ "float,^(kitty)$" ];
+}
+</code></pre>
+<h2 id="hyprlandextraconfigbinds"><a class="header" href="#hyprlandextraconfigbinds">hyprland.extraConfig.binds</a></h2>
+<p>Extra binds for Hyprland.</p>
+<p>type: <code>listOf string</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  hyprland.extraConfig.binds = [ "$mainMod, B, exec, steam" ];
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="font-packages"><a class="header" href="#font-packages">Font Packages</a></h1>
+<p>Font package options.</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  fontPackages = {
+    enable = true;
+    extraFonts = (with pkgs; [ fira-code ]);
+  };
+}
+</code></pre>
+<h2 id="fontpackagesenable"><a class="header" href="#fontpackagesenable">fontPackages.enable</a></h2>
+<p>Enable the custom font packages.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  fontPackages.enable = true;
+}
+</code></pre>
+<h2 id="fontpackagesextrafonts"><a class="header" href="#fontpackagesextrafonts">fontPackages.extraFonts</a></h2>
+<p>Extra font packages.</p>
+<p>type: <code>listOf packages</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  fontPackages.extraFonts = [ pkgs.fira-code ];
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cursor"><a class="header" href="#cursor">Cursor</a></h1>
+<p>Cursor options.</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  cursor = {
+    enable = true;
+    size = 32;
+  };
+}
+</code></pre>
+<h2 id="cursorenable"><a class="header" href="#cursorenable">cursor.enable</a></h2>
+<p>Enables a custom cursor</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  cursor.enable = true;
+}
+</code></pre>
+<h2 id="cursorsize"><a class="header" href="#cursorsize">cursor.size</a></h2>
+<p>Cursor's size.</p>
+<p>type: <code>int</code></p>
+<p>default: <code>24</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  cursor.size = 32;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="package-options"><a class="header" href="#package-options">Package Options</a></h1>
+<p>Package options / extra packages.</p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  packages = {
+
+  };
+}
+</code></pre>
+<h2 id="packagesguipackagesenable"><a class="header" href="#packagesguipackagesenable">packages.guiPackages.enable</a></h2>
+<p>Enables GUI packages.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>&lt;gui.enable&gt;</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  packages.guiPackages.enable = true;
+}
+</code></pre>
+<h2 id="packagesbasepackagesenable"><a class="header" href="#packagesbasepackagesenable">packages.basePackages.enable</a></h2>
+<p>Enables the base set of CLI and system packages.</p>
+<p>type: <code>bool</code></p>
+<p>default: <code>true</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  packages.basePackages.enable = true;
+}
+</code></pre>
+<h2 id="packagesremove"><a class="header" href="#packagesremove">packages.remove</a></h2>
+<p>A list of packages to remove from the base set of packages.
+Useful for alternate architectures.</p>
+<p>type: <code>listOf package</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  packages.remove = with pkgs; [
+    some-package
+    x86-64-only-package
+    my-sanity
+  ];
+}
+</code></pre>
+<h2 id="packagesextrapackages"><a class="header" href="#packagesextrapackages">packages.extraPackages</a></h2>
+<p>A list of packages to add to the base set of packages.</p>
+<p>type: <code>listOf package</code></p>
+<p>Example:</p>
+<pre><code class="language-nix">{
+  packages.extraPackages = with pkgs; [
+    package
+    other-package
+    beans
+  ];
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="neovim"><a class="header" href="#neovim">Neovim</a></h1>
+<p>Custom Neovim config generated by nixvim.</p>
+<h2 id="keybinds"><a class="header" href="#keybinds">Keybinds</a></h2>
+<p>They are all workman keybinds so I don't recommend using a lot of them.</p>
+<h2 id="layout"><a class="header" href="#layout">Layout</a></h2>
+<p>On the left side (opened by default with CTRL+E) is the file explorer</p>
+<ul>
+<li>f to find a file</li>
+<li>. to set the root</li>
+<li>ENTER to open a file / open a folder</li>
+<li>s to open a file split</li>
+</ul>
+<p>On the bottom is lualine :)</p>
+<p>on the top is bufferline</p>
+<ul>
+<li>tn to go the next buffer</li>
+<li>tp to go the previous buffer</li>
+<li>td to close the current buffer</li>
+</ul>
+<p>on the right side (opened by default with CTRL+T) is the terminal</p>
+<ul>
+<li>it is a terminal :)</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
