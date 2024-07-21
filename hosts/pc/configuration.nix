@@ -2,7 +2,7 @@
   imports = [./hardware-configuration.nix];
 
   hostName = "NixPC"; # host name of system, same as outputs.nixosConfigurations.<name>
-  flakePath = "/home/asynth/.flakes/flakes"; # path to flakes
+  flakePath = "/home/asynth/.flakes"; # path to flakes
 
   workman.enable = true;
   vm.enable = true; # enables qemu vm
