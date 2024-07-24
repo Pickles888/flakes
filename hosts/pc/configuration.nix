@@ -14,10 +14,6 @@
     sensitivity = "0.2";
     display = "DP-1,1920x1080@240,0x0,1";
   };
-
-  extraAliases = {
-      rcmus = "sudo sshfs -o allow_other,IdentityFile=/home/asynth/.ssh/id_rsa pickles@192.168.7.124:/home/pickles/music /home/asynth/Music && cmus";
-  };
   
   git = {
     userName = "Pickles888";
