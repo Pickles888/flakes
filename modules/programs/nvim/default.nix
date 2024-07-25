@@ -1,4 +1,9 @@
-{nixvim, ...}: {
+{
+  nixvim, 
+  inputs, 
+  pkgs, 
+  ...
+}: {
   imports = [
     nixvim.nixosModules.nixvim
     ./lsp.nix
@@ -7,6 +12,28 @@
   ];
 
   programs.nixvim = {
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin { 
+	name = "markdown.nvim";
+	src = inputs.plugin-markdown;
+      })
+    ];
+    extraConfigLua = "require('render-markdown').setup({
+        code = {
+	    enabled = true,
+	    sign = true,
+	    style = 'full',
+	    left_pad = 0,
+	    right_pad = 0,
+	    width = 'full',
+	    border = 'thin',
+	    above = '▄',
+	    below = '▀',
+	    highlight = 'RenderMarkdownCode',
+	    highlight_inline = 'RenderMarkdownCodeInline',
+	},
+    })";
+
     enable = true;
     opts = {
       number = true;
@@ -41,11 +68,22 @@
           "*"
         ];
       }
+      {
+	command = "RenderMarkdown enable";
+	event = [
+	  "BufEnter"
+	  "BufWinEnter"
+	];
+	pattern = [
+	  "*.md"
+	];
+      }
     ];
 
     plugins = {
       markdown-preview.enable = true;
       barbecue.enable = true;
+      mini.enable = true;
 
       toggleterm = {
         enable = true;

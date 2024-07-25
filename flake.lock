@@ -232,11 +232,28 @@
         "type": "github"
       }
     },
+    "plugin-markdown": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721893722,
+        "narHash": "sha256-zsksXGxT7ea1hWfbuuqmwprgAhyt+MyfPKYCAJ8zG5U=",
+        "owner": "MeanderingProgrammer",
+        "repo": "markdown.nvim",
+        "rev": "8d1452860e1c6b03d814af10024c7edc88e44963",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MeanderingProgrammer",
+        "repo": "markdown.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "plugin-markdown": "plugin-markdown"
       }
     },
     "systems": {

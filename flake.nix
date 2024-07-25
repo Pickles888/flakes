@@ -12,6 +12,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plugin-markdown = {
+      url = "github:MeanderingProgrammer/markdown.nvim";
+      flake = false;
+    };
   };
 
   outputs = {

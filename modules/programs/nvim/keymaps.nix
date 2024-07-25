@@ -1,4 +1,4 @@
-{nixvim, ...}: {
+{...}: {
   programs.nixvim.keymaps = [
     {
       action = "<cmd>Neotree reveal<cr>";
