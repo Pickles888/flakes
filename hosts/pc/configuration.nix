@@ -1,4 +1,7 @@
-{...}: {
+{
+  pkgs,
+  ...
+}: {
   imports = [./hardware-configuration.nix];
 
   hostName = "NixPC"; # host name of system, same as outputs.nixosConfigurations.<name>
@@ -34,4 +37,10 @@
     locale = "en_US.UTF-8";
     timeZone = "America/Los_Angeles";
   };
+
+  packages.extraPackages = with pkgs; [
+    modrinth-app
+    discord
+    via
+  ];
 }

@@ -6,7 +6,6 @@
   guiPackages = (with pkgs; [
     cava
     lumafly
-    #modrinth-app
     xwaylandvideobridge
     firefox
     hypridle
@@ -16,8 +15,6 @@
     xdg-desktop-portal-hyprland
     vscode
     brightnessctl
-    #discord
-    #vesktop
     wofi
     xdg-utils
     gnome.gnome-calculator
@@ -28,10 +25,10 @@
     libnotify
     zathura
     viu
-    #via
     wf-recorder
     playerctl
     hyprshot
+    mdbook
     gnome.nautilus
   ]) 
   ++ lib.lists.optionals config.swaync.enable [ pkgs.swaynotificationcenter ]

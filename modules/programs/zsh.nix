@@ -40,19 +40,6 @@ in {
         #   format = "$output";
         # };
 
-        battery = {
-          full_symbol = "󱈑";
-          charging_symbol = "󰂄";
-          discharging_symbol = "󱟤";
-          unknown_symbol = "󰂑";
-          empty_symbol = "󰂎";
-          format = "$symbol";
-          display = {
-            threshold = 10;
-            style = "bold red";
-          };
-        };
-
         nix_shell.format = "in [$symbol]($style)";
 
         character = {
