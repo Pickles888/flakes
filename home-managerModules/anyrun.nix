@@ -21,8 +21,7 @@
 	"librink.so",
 	"libshell.so",
 	"libtranslate.so",
-	"libdictionary.so",
-	"libsymbols.so"
+	"libdictionary.so"
       ],
     )
   '';
