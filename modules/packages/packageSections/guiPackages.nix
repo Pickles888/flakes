@@ -1,7 +1,8 @@
 {
   pkgs, 
   config, 
-  lib
+  lib,
+  inputs
 }: {
   guiPackages = (with pkgs; [
     cava
@@ -16,6 +17,7 @@
     vscode
     brightnessctl
     wofi
+    alsa-utils
     xdg-utils
     gnome.gnome-calculator
     gnome.gnome-clocks
@@ -31,6 +33,7 @@
     gnome.nautilus
   ]) 
   ++ lib.lists.optionals config.swaync.enable [ pkgs.swaynotificationcenter ]
-  ++ lib.lists.optionals config.waybar.enable [ pkgs.waybar ];
+  ++ lib.lists.optionals config.waybar.enable [ pkgs.waybar ]
+  ++ [ inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins ];
 }
 

@@ -2,9 +2,10 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: let
-  guiPackages = import ./packageSections/guiPackages.nix {inherit pkgs lib config;};
+  guiPackages = import ./packageSections/guiPackages.nix {inherit pkgs inputs lib config;};
   basePackages = import ./packageSections/basePackages.nix {inherit pkgs;};
 
   guiPackagesRemoved = lib.lists.subtractLists config.packages.remove guiPackages.guiPackages;

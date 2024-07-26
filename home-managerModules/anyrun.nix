@@ -18,7 +18,16 @@
       max_entries: None,
       plugins: [
         "libapplications.so",
+	"librink.so",
+	"libshell.so",
+	"libtranslate.so",
+	"libwebsearch.so",
+	"libdictionary.so"
       ],
     )
+  '';
+
+  xdg.configFile."anyrun/websearch.ron".text = ''
+    Config(engines: [DuckDuckGo])
   '';
 }

@@ -116,7 +116,7 @@ in lib.mkIf osConfig.hyprland.enable{
           "$mainMod, Q, killactive,"
           "$mainMod, E, exec, nautilus"
           "$mainMod, Z, togglefloating,"
-          "$mainMod, SPACE, exec, anyrun"
+          "$mainMod, SPACE, exec, anyrun" ", XF86Search, exec, anyrun"
           "$mainMod, M, pseudo,"
           "$mainMod, X, togglesplit,"
           "$mainMod, left, movefocus, l"
@@ -140,6 +140,8 @@ in lib.mkIf osConfig.hyprland.enable{
           10))
 	++ osConfig.hyprland.extraConfig.binds;
 
+# bindl=, XF86AudioMute, exec, amixer set Master toggle
+
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
@@ -150,6 +152,20 @@ in lib.mkIf osConfig.hyprland.enable{
         (resize "left" "-30 0")
         (resize "up" "0 -30")
         (resize "down" "0 30")
+      ];
+
+      bindle = [
+	", XF86AudioRaiseVolume, exec, amixer set Master 1%+"
+	", XF86AudioLowerVolume, exec, amixer set Master 1%-"
+	", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+	", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+      ];
+
+      bindl = [
+	", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+	", XF86AudioPlay, exec, playerctl play-pause" 
+	", XF86AudioNext, exec, playerctl next"
+	", XF86AudioPrev, exec, playerctl previous"
       ];
     };
   };
