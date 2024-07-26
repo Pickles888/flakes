@@ -274,6 +274,11 @@
         type = lib.types.ints.unsigned;
 	default = 4;
       };
+
+      mediaMaxLength = lib.mkOption {
+	type = lib.types.ints.unsigned;
+	default = 64;
+      };
     };
 
     cursor = {

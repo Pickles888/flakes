@@ -47,7 +47,7 @@
 	  },
 
 	  "custom/media": {
-	      "max-length": 64,
+	      "max-length": ${toString osConfig.waybar.mediaMaxLength},
 	      "format": "{}",
 	      "interval": 1,
 	      "exec": "playerctl metadata --format '󰎈 {{title}} - {{artist}}' | xargs",

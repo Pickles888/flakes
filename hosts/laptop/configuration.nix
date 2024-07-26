@@ -21,7 +21,8 @@
 
   waybar = {
     spacing = 2;
-    textSize = 15;
+    textSize = 14;
+    mediaMaxLength = 35;
   };
   
   hyprland = {
