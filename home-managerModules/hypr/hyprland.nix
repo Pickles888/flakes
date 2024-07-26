@@ -34,6 +34,12 @@ in lib.mkIf osConfig.hyprland.enable{
         follow_mouse = "1";
         accel_profile = "flat";
         sensitivity = "${osConfig.hyprland.sensitivity}";
+        touchpad = {
+          natural_scroll = true;
+          scroll_factor = "0.7";
+          clickfinger_behavior = true;
+          tap-to-click = false;
+        };
       };
 
 

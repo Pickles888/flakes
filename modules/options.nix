@@ -9,6 +9,12 @@
       description = "Hostname of the entire system";
     };
 
+    wifi.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enables wifi";
+    };
+
     gui.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -150,6 +156,7 @@
 
       port = lib.mkOption {
 	type = lib.types.port;
+        default = 22;
 	description = "SSH Port Number";
       };
     };
@@ -202,7 +209,7 @@
 
     flakePath = lib.mkOption {
       type = lib.types.path;
-      default = "/etc/nixos";
+      default = /etc/nixos;
       description = "Loaction of Flakes";
     };
 

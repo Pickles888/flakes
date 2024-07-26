@@ -5,7 +5,7 @@
 }: lib.mkIf config.autoUpgrade.enable {
   system.autoUpgrade = {
     enable = true;
-    flake = config.flakePath;
+    flake = "${config.flakePath}";
     flags = [
       "--update-input"
       "nixpkgs"

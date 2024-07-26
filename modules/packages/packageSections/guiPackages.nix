@@ -6,9 +6,7 @@
   guiPackages = (with pkgs; [
     cava
     lumafly
-    cider
-    obsidian
-    modrinth-app
+    #modrinth-app
     xwaylandvideobridge
     firefox
     hypridle
@@ -18,8 +16,8 @@
     xdg-desktop-portal-hyprland
     vscode
     brightnessctl
-    discord
-    vesktop
+    #discord
+    #vesktop
     wofi
     xdg-utils
     gnome.gnome-calculator
@@ -30,7 +28,7 @@
     libnotify
     zathura
     viu
-    via
+    #via
     wf-recorder
     playerctl
     hyprshot

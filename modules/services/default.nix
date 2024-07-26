@@ -6,5 +6,6 @@
     ./xserver.nix
     ./printing.nix
     ./autologin.nix
+    ./wifi.nix
   ];
 }
