@@ -21,13 +21,9 @@
 	"librink.so",
 	"libshell.so",
 	"libtranslate.so",
-	"libwebsearch.so",
-	"libdictionary.so"
+	"libdictionary.so",
+	"libsymbols.so"
       ],
     )
-  '';
-
-  xdg.configFile."anyrun/websearch.ron".text = ''
-    Config(engines: [DuckDuckGo])
   '';
 }
