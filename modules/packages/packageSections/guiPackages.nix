@@ -31,7 +31,6 @@
     playerctl
     hyprshot
     signal-desktop
-    dissent
     gnome.nautilus
   ]) 
   ++ lib.lists.optionals config.swaync.enable [ pkgs.swaynotificationcenter ]

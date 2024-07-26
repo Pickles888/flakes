@@ -1,4 +1,7 @@
-{...}: {
+{
+  pkgs,
+  ...
+}: {
   imports = [ ./hardware-configuration.nix ./asahi ];
 
   hostName = "NixLaptop";
@@ -28,5 +31,9 @@
   hyprland = {
    sensitivity = "0";
    display = ",highres,auto,2";
-  };
+ };
+
+ packages.extraPackages = with pkgs; [
+    dissent
+ ];
 }
