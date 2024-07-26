@@ -42,5 +42,6 @@
     modrinth-app
     discord
     via
+    vesktop
   ];
 }
