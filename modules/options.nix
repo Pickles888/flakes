@@ -265,9 +265,14 @@
 	default = config.gui.enable;
       };
 
-      size = lib.mkOption {
+      textSize = lib.mkOption {
 	type = lib.types.ints.unsigned;
-	default = 2;
+	default = 16;
+      };
+
+      spacing = lib.mkOption {
+        type = lib.types.ints.unsigned;
+	default = 4;
       };
     };
 

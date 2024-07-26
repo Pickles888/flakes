@@ -11,7 +11,7 @@
 	  //"height": 0, // Waybar height (to be removed for auto height)
 	  // "width": 1280, // Waybar width
 	  "margin": 5,
-	  "spacing": ${toString (osConfig.waybar.size * 2)}, // Gaps between modules (4px)
+	  "spacing": ${toString osConfig.waybar.spacing}, // Gaps between modules (4px)
 	  // Choose the order of the modules
 	  "modules-left": [
 	      "custom/nixos",
@@ -148,11 +148,11 @@
 	  /* `otf-font-awesome` is required to be installed for icons */
 	  font-family: 'JetbrainsMono Nerd Font';
 	  font-weight: bold;
-	  font-size: 16px;
+	  font-size: ${toString osConfig.waybar.textSize}px;
 	  border: none;
 	  border-radius: 0;
 	  min-height: 0;
-	  margin: ${toString osConfig.waybar.size}px;
+	  margin: 2px;
 	  padding: 0px;
       }
 
