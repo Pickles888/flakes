@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{...}: {
   imports = [ ./hardware-configuration.nix ./asahi ];
 
   hostName = "NixLaptop";
@@ -10,6 +7,7 @@
   grub.enable = false;
   bluetooth.enable = true;
   workman.enable = true;
+  wifi.enable = true;
 
   git = {
     userName = "Pickles888";
@@ -20,8 +18,11 @@
 
   steam.enable = false;
   kitty.fontSize = 12;
-  waybar.spacing = 2;
-  waybar.textSize = 15;
+
+  waybar = {
+    spacing = 2;
+    textSize = 15;
+  };
   
   hyprland = {
    sensitivity = "0";
