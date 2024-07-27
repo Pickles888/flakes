@@ -8,7 +8,7 @@
     cava
     lumafly
     xwaylandvideobridge
-    firefox
+    librewolf
     hypridle
     hyprlock
     hyprshot
