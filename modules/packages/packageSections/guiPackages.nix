@@ -8,8 +8,8 @@
     cava
     lumafly
     xwaylandvideobridge
-    librewolf
     hypridle
+    firefox
     hyprlock
     hyprshot
     jdk17
