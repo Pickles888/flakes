@@ -88,7 +88,7 @@
 	      "format-ethernet": "󰈀 Ethernet",
 	      "tooltip-format": "{ifname} via {gwaddr}",
 	      "format-linked": "{ifname} (No IP)",
-	      "format-disconnected": "󰤭",
+	      "format-disconnected": "󰤭 ",
 	      "format-alt": "{ifname}: {ipaddr}/{cidr}",
 	      "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ]
 	  },
@@ -97,7 +97,7 @@
 	      "format": "{icon} {volume}",
 	      "format-bluetooth": "󰂰 {volume}",
 	      "format-bluetooth-muted": "󰂰 ",
-	      "format-muted": "",
+	      "format-muted": " ",
 	      "format-icons": {
 		  "headphone": "󰋋",
 		  "hands-free": "󰋋",
