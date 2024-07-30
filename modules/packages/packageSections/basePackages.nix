@@ -1,6 +1,7 @@
 {pkgs}: {
   basePackages = with pkgs; [
     eza
+    pass
     wget
     git
     cmus
