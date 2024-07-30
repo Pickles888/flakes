@@ -2,6 +2,7 @@
   basePackages = with pkgs; [
     eza
     pass
+    gnupg
     wget
     git
     cmus
