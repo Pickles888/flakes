@@ -4,13 +4,13 @@
   pkgs,
   ...
 }: lib.mkIf config.gui.enable {
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
-      xdg-desktop-portal-hyprland
     ];
+    config.common.default = "*";
   };
 }

@@ -19,7 +19,7 @@
     wofi
     alsa-utils
     xdg-utils
-    gnome.gnome-calculator
+    gnome-calculator
     gnome.gnome-clocks
     inkscape
     pavucontrol
@@ -31,7 +31,7 @@
     playerctl
     hyprshot
     signal-desktop
-    gnome.nautilus
+    nautilus
   ]) 
   ++ lib.lists.optionals config.swaync.enable [ pkgs.swaynotificationcenter ]
   ++ lib.lists.optionals config.waybar.enable [ pkgs.waybar ]
