@@ -43,7 +43,11 @@
 	  "custom/nixos": {
 	      "format": "",
 	      "on-click": "kitty nh os switch && exit",
-	      "on-click-right": "kitty sudo nix flake update /etc/nixos && exit"
+	      "on-click-right": "kitty ${
+		if lib.strings.hasPrefix "/home/asynth/" osConfig.flakePath
+		  then ""
+		  else "sudo "
+	      }nix flake update ${osConfig.flakePath} && exit"
 	  },
 
 	  "custom/media": {

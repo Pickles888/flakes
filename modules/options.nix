@@ -208,8 +208,8 @@
     };
 
     flakePath = lib.mkOption {
-      type = lib.types.path;
-      default = /etc/nixos;
+      type = lib.types.str;
+      default = "/etc/nixos";
       description = "Loaction of Flakes";
     };
 
