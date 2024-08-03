@@ -66,13 +66,13 @@
     }
     {
       mode = "n";
-      key = "gg";
-      action = "<cmd>GitGutterToggle<cr>";
+      key = "gca";
+      action = "<cmd>Git commit -a<cr>";
     }
     {
       mode = "n";
-      key = "gc";
-      action = "<cmd>Git commit -a<cr>";
+      key = "gcr";
+      action = "<cmd>Git rebase -i<cr>";
     }
     {
       mode = "n";
@@ -93,11 +93,6 @@
       mode = "n";
       key = "gd";
       action = "<cmd>Git diff<cr>";
-    }
-    {
-      mode = "n";
-      key = "gr";
-      action = "<cmd>Git rebase -i<cr>";
     }
   ];
 }

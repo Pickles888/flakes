@@ -47,6 +47,12 @@
       settings.flavour = "frappe";
     };
 
+    highlight = {
+      GitGutterAdd.fg = "#a6d189";
+      GitGutterDelete.fg = "#e78284"; 
+      GitGutterChange.fg = "#838ba7";
+    };
+
     autoCmd = [
       {
         command = "set shiftwidth=2";
@@ -84,11 +90,17 @@
       markdown-preview.enable = true;
       barbecue.enable = true;
       mini.enable = true;
+      which-key.enable = true;
+      rainbow-delimiters.enable = true;
 
       fugitive.enable = true;
       gitgutter = {
 	enable = true;
-	enableByDefault = false;
+	signs = {
+	  added = "";
+	  modified = "";
+	  removed = "";
+	};
       };
 
       toggleterm = {
@@ -104,11 +116,11 @@
       neo-tree = {
         enable = true;
         defaultComponentConfigs.container.rightPadding = 1;
-        window = {width = 30;};
+        window.width = 30;
+	closeIfLastWindow = true;
       };
 
       treesitter.enable = true;
-      oil.enable = true;
       bufferline = {
         enable = true;
         diagnostics = true;
