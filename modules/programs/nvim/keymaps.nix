@@ -71,6 +71,11 @@
     }
     {
       mode = "n";
+      key = "gcf";
+      action = "<cmd>Git commit --amend<cr>";
+    }
+    {
+      mode = "n";
       key = "gbr";
       action = "<cmd>Git branch<cr>";
     }
@@ -98,6 +103,11 @@
       mode = "n";
       key = "gd";
       action = "<cmd>Git diff<cr>";
+    }
+    {
+      mode = "n";
+      key = "``";
+      action = "<cmd>Neotree close<cr><cmd>wa<cr><cmd>qa!<cr>";
     }
   ];
 }
