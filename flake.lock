@@ -300,11 +300,11 @@
     "plugin-markdown": {
       "flake": false,
       "locked": {
-        "lastModified": 1722584574,
-        "narHash": "sha256-nodRTxwdzAc/hFaQjt+K+ji/IFNaUIH3IxvjBWBw5bA=",
+        "lastModified": 1722623984,
+        "narHash": "sha256-HeZmMsFqdLLqd2PVqw7XG3LgVrNwh1e+tA/ky5bTEF0=",
         "owner": "MeanderingProgrammer",
         "repo": "markdown.nvim",
-        "rev": "e6695b4ff330cf9c216fe5e40491cee39d93383a",
+        "rev": "70ae5e9e517c930f74c3ad9e4ef325314967f2a0",
         "type": "github"
       },
       "original": {
