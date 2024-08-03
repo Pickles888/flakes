@@ -71,12 +71,17 @@
     }
     {
       mode = "n";
-      key = "gcr";
-      action = "<cmd>Git rebase -i<cr>";
+      key = "gbr";
+      action = "<cmd>Git branch<cr>";
     }
     {
       mode = "n";
-      key = "gb";
+      key = "gp";
+      action = "<cmd>Git pull<cr>";
+    }
+    {
+      mode = "n";
+      key = "gbb";
       action = "<cmd>Git blame<cr>";
     }
     {

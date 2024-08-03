@@ -98,8 +98,14 @@
 	enable = true;
 	signs = {
 	  added = "";
+
 	  modified = "";
+	  modifiedAbove = "";
+	  modifiedRemoved = "󰍷";
+
 	  removed = "";
+	  removedAboveAndBelow = "";
+	  removedFirstLine = "";
 	};
       };
 
