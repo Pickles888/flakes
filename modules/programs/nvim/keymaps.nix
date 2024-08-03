@@ -66,12 +66,12 @@
     }
     {
       mode = "n";
-      key = "gca";
+      key = "gco";
       action = "<cmd>Git commit -a<cr>";
     }
     {
       mode = "n";
-      key = "gcf";
+      key = "gca";
       action = "<cmd>Git commit --amend<cr>";
     }
     {
@@ -81,8 +81,23 @@
     }
     {
       mode = "n";
-      key = "gp";
+      key = "gr";
+      action = "<Nop>";
+    }
+    {
+      mode = "n";
+      key = "grg";
       action = "<cmd>Git pull<cr>";
+    }
+    {
+      mode = "n";
+      key = "gru";
+      action = "<cmd>Git push<cr>";
+    }
+    {
+      mode = "n";
+      key = "grf";
+      action = "<cmd>Git fetch<cr>";
     }
     {
       mode = "n";
