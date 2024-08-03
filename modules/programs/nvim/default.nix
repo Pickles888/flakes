@@ -85,6 +85,12 @@
       barbecue.enable = true;
       mini.enable = true;
 
+      fugitive.enable = true;
+      gitgutter = {
+	enable = true;
+	enableByDefault = false;
+      };
+
       toggleterm = {
         enable = true;
         settings = {

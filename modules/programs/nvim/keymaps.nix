@@ -60,14 +60,44 @@
       mode = ["n" "i" "v"];
     }
     {
-      action = "<cmd>wq<cr>";
-      key = "<A-q>";
-      mode = ["n" "i" "v"];
-    }
-    {
       mode = "t";
       key = "<esc>";
       action = "<C-\\><C-n>";
+    }
+    {
+      mode = "n";
+      key = "gg";
+      action = "<cmd>GitGutterToggle<cr>";
+    }
+    {
+      mode = "n";
+      key = "gc";
+      action = "<cmd>Git commit -a<cr>";
+    }
+    {
+      mode = "n";
+      key = "gb";
+      action = "<cmd>Git blame<cr>";
+    }
+    {
+      mode = "n";
+      key = "ga";
+      action = "<cmd>Git add -A<cr>";
+    }
+    {
+      mode = "n";
+      key = "gl";
+      action = "<cmd>Git log<cr>";
+    }
+    {
+      mode = "n";
+      key = "gd";
+      action = "<cmd>Git diff<cr>";
+    }
+    {
+      mode = "n";
+      key = "gr";
+      action = "<cmd>Git rebase -i<cr>";
     }
   ];
 }
