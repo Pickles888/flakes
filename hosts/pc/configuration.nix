@@ -20,7 +20,7 @@
   
   git = {
     userName = "Pickles888";
-    userEmail = "verysaltyasynth@gmail.com";
+    userEmail = "verysaltypickles@gmail.com";
   };
 
   ssh = {
