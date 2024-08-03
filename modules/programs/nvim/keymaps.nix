@@ -91,7 +91,7 @@
     }
     {
       mode = "n";
-      key = "gru";
+      key = "grp";
       action = "<cmd>Git push<cr>";
     }
     {
