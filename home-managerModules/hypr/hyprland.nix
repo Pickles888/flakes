@@ -108,10 +108,11 @@ in lib.mkIf osConfig.hyprland.enable{
         [
           "$mainMod, F, fullscreen,"
           "$mainMod, RETURN, exec, kitty"
-          "ALT, SPACE, exec, hyprctl switchxkblayout kbdfans-og60-keyboard next"
+          "ALT, SPACE, exec, hyprctl switchxkblayout kbdfans-og60-keyboard next" # FIX
           "$mainMod, N, exec, firefox"
           "$mainMod, A, exec, swaync-client -t"
-          "$mainMod, L, exec, blueman-manager"
+          "$mainMod, K, exec, blueman-manager"
+	  "$mainMod, L, exec, hyprlock"
           "$mainMod, Y, exec, hyprshot -m region --clipboard-only"
           "$mainMod, Q, killactive,"
           "$mainMod, E, exec, nautilus"
