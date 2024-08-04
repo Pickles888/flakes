@@ -9,7 +9,7 @@
     }
 
     listener {
-        timeout = ${toString osConfig.hyprland.hyprlock.timeoutSecs}"
+        timeout = ${toString osConfig.hyprland.hyprlock.timeoutSecs}
         on-timeout = loginctl lock-session
     }
   '';
