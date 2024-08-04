@@ -26,7 +26,7 @@ in lib.mkIf osConfig.hyprland.enable{
         "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
         "xwaylandvideobridge"
       ] ++ osConfig.hyprland.extraConfig.startupApps 
-	++ lib.lists.optionals osConfig.hyprland.hyprlock.asLockscreen [ "hyprlock" ];
+	++ lib.lists.optionals osConfig.hyprland.hyprlock.asLockscreen [ "loginctl lock-session" ];
 
       input = {
         kb_layout = "us,us";
@@ -112,7 +112,7 @@ in lib.mkIf osConfig.hyprland.enable{
           "$mainMod, N, exec, firefox"
           "$mainMod, A, exec, swaync-client -t"
           "$mainMod, K, exec, blueman-manager"
-	  "$mainMod, L, exec, hyprlock"
+	  "$mainMod, L, exec, loginctl lock-session"
           "$mainMod, Y, exec, hyprshot -m region --clipboard-only"
           "$mainMod, Q, killactive,"
           "$mainMod, E, exec, nautilus"
