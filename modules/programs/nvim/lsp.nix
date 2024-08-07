@@ -1,17 +1,21 @@
-{nixvim, ...}: {
+{
+  nixvim, 
+  ...
+}: {
   programs.nixvim.plugins = {
-    rustaceanvim.enable = true;
+    rustaceanvim.enable = true; # rust
     lsp = {
       enable = true;
       servers = {
 	clangd.enable = true; # cpp/c
-	java-language-server.enable = true; # java
+	jdt-language-server.enable = true; # java
 	nixd.enable = true; # nix
 	hls.enable = true; # haskell
 	marksman.enable = true; # markdown
 	pylsp.enable = true; # python
 	cssls.enable = true; # css
 	gdscript.enable = true; # godot
+	slint.enable = true; # slint
       };
     };
 
