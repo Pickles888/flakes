@@ -15,16 +15,17 @@
 	pylsp.enable = true; # python
 	cssls.enable = true; # css
 	gdscript.enable = true; # godot
-	slint.enable = true; # slint
+	slint-lsp.enable = true; # slint
       };
     };
+
 
     lsp-format.enable = true;
     cmp-nvim-lsp.enable = true;
 
     luasnip = {
       enable = true;
-      extraConfig.enable_autosnippets = true;
+      settings.enable_autosnippets = true;
     };
 
     autoclose.enable = true;
