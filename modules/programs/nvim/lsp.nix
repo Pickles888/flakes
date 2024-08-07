@@ -19,13 +19,12 @@
       };
     };
 
-
     lsp-format.enable = true;
     cmp-nvim-lsp.enable = true;
 
     luasnip = {
       enable = true;
-      settings.enable_autosnippets = true;
+      extraConfig.enable_autosnippets = true;
     };
 
     autoclose.enable = true;
