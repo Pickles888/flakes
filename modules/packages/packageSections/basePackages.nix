@@ -1,6 +1,9 @@
 {pkgs}: {
   basePackages = with pkgs; [
     eza
+    ripgrep
+    fd
+    dust
     pass
     gnupg
     wget
