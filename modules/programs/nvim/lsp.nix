@@ -24,7 +24,7 @@
 
     luasnip = {
       enable = true;
-      extraConfig.enable_autosnippets = true;
+      settings.enable_autosnippets = true;
     };
 
     autoclose.enable = true;
