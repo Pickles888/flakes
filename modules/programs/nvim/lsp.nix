@@ -41,14 +41,6 @@
       };
 
       implement.enable = false;
-
-      keymaps = [
-	{
-	  mode = "n";
-	  key = "f";
-	  action = "<cmd>Lspsaga code_action<cr>";
-	}
-      ];
     };
 
     luasnip = {

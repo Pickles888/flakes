@@ -129,5 +129,14 @@
       key = "``";
       action = "<cmd>Neotree close<cr><cmd>wa<cr><cmd>qa!<cr>";
     }
+    {
+      mode = "n";
+      key = "f";
+      action = "<cmd>Lspsaga code_action<cr>";
+      options = {
+	desc = "Code Action";
+	silent = true;
+      };
+    }
   ];
 }
