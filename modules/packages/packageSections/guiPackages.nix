@@ -6,6 +6,7 @@
 }: {
   guiPackages = (with pkgs; [
     cava
+    yt-dlp
     lumafly
     xwaylandvideobridge
     hypridle

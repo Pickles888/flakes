@@ -21,6 +21,35 @@
 
     lsp-format.enable = true;
     cmp-nvim-lsp.enable = true;
+    
+    lspsaga = {
+      enable = true;
+      ui = {
+	border = "rounded";
+	codeAction = "󰌵";
+      };
+
+      codeAction = {
+	extendGitSigns = false;
+	showServerName = false;
+      };
+
+      lightbulb = {
+	enable = false;
+	sign = false;
+	virtualText = true;
+      };
+
+      implement.enable = false;
+
+      keymaps = [
+	{
+	  mode = "n";
+	  key = "f";
+	  action = "<cmd>Lspsaga code_action<cr>";
+	}
+      ];
+    };
 
     luasnip = {
       enable = true;
