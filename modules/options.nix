@@ -112,6 +112,18 @@
 	  default = config.hyprland.hyprlock.enable;
 	  description = "Use Hyprlock as your lockscreen";
 	};
+
+	suspend = lib.mkOption {
+	  type = lib.types.bool;
+	  default = false;
+	  description = "Suspends computer after ${toString config.hyprland.hyprlock.suspendSecs}";
+	};
+	
+	suspendSecs = lib.mkOption {
+	  type = lib.types.ints.unsigned;
+	  default = 1800;
+	  description = "Seconds until hyprlock suspends";
+	};
       };
       
       sensitivity = lib.mkOption {

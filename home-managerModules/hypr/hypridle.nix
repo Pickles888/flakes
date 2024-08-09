@@ -12,5 +12,15 @@
         timeout = ${toString osConfig.hyprland.hyprlock.timeoutSecs}
         on-timeout = loginctl lock-session
     }
+
+    ${if osConfig.hyprland.hyprlock.suspend
+      then ''
+	listener {
+	  timeout = ${toString osConfig.hyprland.hyprlock.suspendSecs}
+	  on-timeout = systemctl suspend                # suspend pc
+	}
+      ''
+      else ''''
+    }
   '';
 }
