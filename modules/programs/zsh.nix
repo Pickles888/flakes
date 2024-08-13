@@ -24,6 +24,7 @@ in {
         ls = "eza --icons -F -H --group-directories-first --git -1";
         lsa = "${ls} -T";
         t = "tmux";
+	s = "superfile";
       } // config.extraAliases;
     };
 
