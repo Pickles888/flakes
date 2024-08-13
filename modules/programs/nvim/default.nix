@@ -92,6 +92,7 @@
       mini.enable = true;
       which-key.enable = true;
       rainbow-delimiters.enable = true;
+      nix-develop.enable = true;
 
       fugitive.enable = true;
       gitgutter = {
