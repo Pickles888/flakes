@@ -16,7 +16,6 @@
     hyprshot
     jdk17
     xdg-desktop-portal-hyprland
-    vscode
     brightnessctl
     wofi
     alsa-utils
