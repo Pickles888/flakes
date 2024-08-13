@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }: {
   imports = [./hardware-configuration.nix];
@@ -43,5 +44,6 @@
     discord
     via
     vesktop
+    inputs.ow-mod-man.packages."x86_64-linux".owmods-gui
   ];
 }

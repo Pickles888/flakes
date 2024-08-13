@@ -297,6 +297,26 @@
         "type": "github"
       }
     },
+    "ow-mod-man": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720143629,
+        "narHash": "sha256-66hU3p0yqpEc3urEvCE4k5lomOXYRB9gV7q4lrKsqbk=",
+        "owner": "ow-mods",
+        "repo": "ow-mod-man",
+        "rev": "bc37e1a5e516f794175b350669d515da2ac05da6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ow-mods",
+        "repo": "ow-mod-man",
+        "type": "github"
+      }
+    },
     "plugin-markdown": {
       "flake": false,
       "locked": {
@@ -319,6 +339,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "ow-mod-man": "ow-mod-man",
         "plugin-markdown": "plugin-markdown"
       }
     },
