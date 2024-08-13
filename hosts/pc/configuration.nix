@@ -39,11 +39,11 @@
     timeZone = "America/Los_Angeles";
   };
 
-  packages.extraPackages = with pkgs; [
+  packages.extraPackages = (with pkgs; [
     modrinth-app
     discord
     via
     vesktop
-    inputs.ow-mod-man.packages."x86_64-linux".owmods-gui
-  ];
+    mono
+  ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui ];
 }
