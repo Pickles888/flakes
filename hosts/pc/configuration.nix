@@ -44,6 +44,5 @@
     discord
     via
     vesktop
-    mono
-  ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui ];
+  ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui pkgs.mono ];
 }
