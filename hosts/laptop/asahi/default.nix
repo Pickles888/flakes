@@ -1,5 +1,4 @@
 {
-  lib,
   ...
 }: {
   imports = [ ./apple-silicon-support ];
@@ -11,6 +10,7 @@
       withRust = true;
     
       useExperimentalGPUDriver = true;
+      setupAsahiSound = true;
       experimentalGPUInstallMode = "overlay";
 
       peripheralFirmwareDirectory = ./firmware;
@@ -20,6 +20,7 @@
       enable = true;
     };
   };
+
 
   boot = {
     loader.grub.enable = true;

@@ -31,9 +31,12 @@
   hyprland = {
    sensitivity = "0";
    display = ",highres,auto,2";
+   hyprlock.suspend = true;
  };
 
  packages.extraPackages = with pkgs; [
     dissent
+    mesa-asahi-edge
+    xdg-desktop-portal-hyprland
  ];
 }
