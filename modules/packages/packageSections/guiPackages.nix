@@ -6,6 +6,7 @@
 }: {
   guiPackages = (with pkgs; [
     cava
+    superfile
     yt-dlp
     lumafly
     xwaylandvideobridge
