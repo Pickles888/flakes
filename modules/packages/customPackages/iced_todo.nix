@@ -12,10 +12,10 @@ rustPlatform.buildRustPackage rec {
     owner = "Pickles888";
     repo = "iced-todo";
     rev = "v${version}";
-    sha256 = "sha256-MUb327AHKDhKswzdorD/rfLLrRX3IWGMiLDcTclhEsY=";
+    sha256 = "sha256-Ng9Cj6PMwPgHXz1zCFhr50tXUSY0OzJN6SSkC9GlMec=";
   };
 
-  cargoHash = "sha256-elM7LP3wUmMizTQzpAVBZ9IiHo7wPPA63nucRf9yBtE=";
+  cargoHash = "sha256-sdaqr1zYhbyI1QqkPK9QNEbNttSIjT9935EPV3r2yKk=";
 
   nativeBuildInputs = with pkgs; [
     pkg-config
