@@ -6,7 +6,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "iced-todo";
-  version = "1.0.0";
+  version = "1.0.1";
 
   src = fetchFromGitHub {
     owner = "Pickles888";
@@ -42,7 +42,7 @@ rustPlatform.buildRustPackage rec {
   ];
 
   postFixup = ''
-    wrapProgram $out/bin/iced-todo \
+    wrapProgram $out/bin/${pname} \
       --suffix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath buildInputs} \
       --suffix WINIT_UNIX_BACKEND : "wayland"
   '';
