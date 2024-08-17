@@ -111,7 +111,7 @@ in lib.mkIf osConfig.hyprland.enable{
           "ALT, SPACE, exec, hyprctl switchxkblayout kbdfans-og60-keyboard next" # FIX
           "$mainMod, N, exec, firefox"
           "$mainMod, A, exec, swaync-client -t"
-          "$mainMod, K, exec, blueman-manager"
+	  "$mainMod, S, exec, iced-todo"
 	  "$mainMod, L, exec, loginctl lock-session"
           "$mainMod, Y, exec, hyprshot -m region --clipboard-only"
           "$mainMod, Q, killactive,"
@@ -139,7 +139,8 @@ in lib.mkIf osConfig.hyprland.enable{
             "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
           ])
           10))
-	++ osConfig.hyprland.extraConfig.binds;
+	++ osConfig.hyprland.extraConfig.binds
+	++ lib.lists.optionals osConfig.bluetooth.enable [ "$mainMod, K, exec, blueman-manager" ];
 
 # bindl=, XF86AudioMute, exec, amixer set Master toggle
 
