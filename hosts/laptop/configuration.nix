@@ -34,9 +34,14 @@
    hyprlock.suspend = true;
  };
 
+ virtualisation.podman = {
+  enable = true;
+  dockerCompat = true;
+ };
+
  packages.extraPackages = with pkgs; [
-    dissent
-    mesa-asahi-edge
-    xdg-desktop-portal-hyprland
+  dissent
+  mesa-asahi-edge
+  xdg-desktop-portal-hyprland
  ];
 }
