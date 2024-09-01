@@ -130,17 +130,12 @@
       treesitter.enable = true;
       bufferline = {
         enable = true;
-        diagnostics = true;
         offsets = [
           {
             filetype = "neo-tree";
             text = "";
           }
         ];
-        indicator = {
-          style = "icon";
-          icon = "";
-        };
       };
     };
   };

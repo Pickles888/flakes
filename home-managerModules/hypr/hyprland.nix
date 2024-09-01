@@ -3,10 +3,11 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   resize = key: val: "$mainMod CONTROL, ${key}, resizeactive, ${val}";
-in lib.mkIf osConfig.hyprland.enable{
+in lib.mkIf osConfig.hyprland.enable {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -170,5 +171,7 @@ in lib.mkIf osConfig.hyprland.enable{
 	", XF86AudioPrev, exec, playerctl previous"
       ];
     };
+  } // lib.attrsets.optionalAttrs osConfig.hyprland.unstable {
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   };
 }

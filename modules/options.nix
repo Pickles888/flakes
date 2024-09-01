@@ -93,6 +93,12 @@
 	default = config.gui.enable;
 	description = "Enables hyprland";
       };
+
+      unstable = lib.mkOption {
+	type = lib.types.bool;
+	default = config.gui.enable;
+	description = "Enables hyprland unstable";
+      };
       
       hyprlock = {
 	enable = lib.mkOption {

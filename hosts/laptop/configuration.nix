@@ -20,7 +20,7 @@
   gui.enable = true;
 
   steam.enable = false;
-  kitty.fontSize = 12;
+  kitty.fontSize = 11;
 
   waybar = {
     spacing = 2;
@@ -30,6 +30,7 @@
   
   hyprland = {
    sensitivity = "0";
+   unstable = false;
    display = ",highres,auto,2";
    hyprlock.suspend = true;
  };
