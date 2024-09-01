@@ -4,7 +4,8 @@
   pkgs,
   ...
 }: let 
-  extraConfig = builtins.readFile ./config.nu; 
+  extraConfig = builtins.readFile ./config.nu;
+  extraEnv = builtins.readFile ./env.nu;
 in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
   programs = {
     nushell = {
@@ -17,6 +18,8 @@ in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
 	  nitch	
 	}
       '';
+
+      extraEnv = extraEnv;
 
       shellAliases = rec {
 	c = "clear";
