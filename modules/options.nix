@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options = {
@@ -257,10 +258,18 @@
       };
     };
 
-    extraAliases = lib.mkOption {
-      type = lib.types.attrs;
-      default = {};
-      description = "An attribute set of extra zsh aliases";
+    shell = {
+      shell = lib.mkOption {
+	type = lib.types.enum [ pkgs.zsh pkgs.nushell ];
+	default = pkgs.nushell;
+	description = "What shell is used; either zsh or nushell";
+      };
+
+      extraAliases = lib.mkOption {
+	type = lib.types.attrs;
+	default = {};
+	description = "An attribute set of extra shell aliases";
+      };
     };
 
     git = {

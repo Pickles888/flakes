@@ -43,6 +43,5 @@
  packages.extraPackages = with pkgs; [
   dissent
   mesa-asahi-edge
-  xdg-desktop-portal-hyprland
  ];
 }

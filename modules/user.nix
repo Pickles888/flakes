@@ -1,9 +1,10 @@
 {
-  pkgs,
+  config,
   ...
+
 }: {
   users = {
-    defaultUserShell = pkgs.zsh;
+    defaultUserShell = config.shell.shell;
     users.asynth = {
       createHome = true;
       home = "/home/asynth";

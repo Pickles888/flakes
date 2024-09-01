@@ -1,53 +1,49 @@
 {
-  config,
+  osConfig,
   lib,
+  pkgs,
   ...
-}: let
-  fetch = "nitch";
-  initScript = ''
-    if [ $(tty) = /dev/tty1 ]; then
-      exec Hyprland
-    else
-      ${fetch}
-    fi
-  '';
-in lib.mkIf (config.shell.shell == "zsh") {
+}: let 
+  extraConfig = builtins.readFile ./config.nu; 
+in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
   programs = {
-    zsh = {
+    nushell = {
       enable = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-      autosuggestions.enable = true;
-      interactiveShellInit = initScript;
+      extraConfig = extraConfig;
+      extraLogin = lib.mkIf osConfig.hyprland.enable ''
+	if (tty) == "/dev/tty1" {
+	  exec Hyprland
+	} else {
+	  nitch	
+	}
+      '';
+
       shellAliases = rec {
-	cdf = "cd ${config.flakePath}";
-	c = "clear && ${fetch}";
-        ls = "eza --icons -F -H --group-directories-first --git -1";
-        lsa = "${ls} -T";
+	c = "clear";
+	cdf = "cd ${osConfig.flakePath}";
+        ez = "eza --icons -F -H --group-directories-first --git -1";
+        eza = "${ez} -T";
         t = "tmux";
 	s = "superfile";
-      } // config.shell.extraAliases;
+      } // osConfig.shell.extraAliases;
+    };
+
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
     };
 
     starship = {
       enable = true;
-      presets = ["nerd-font-symbols"];
       settings = {
-        continuation_prompt = "[❯ ](surface0)";
+        continuation_prompt = "[:::](surface0)";
         palette = "catppuccin_frappe";
-        # right_format = "[$custom](surface2)";
-        # custom.time = {
-        #   command = lib.strings.concatStrings ["/etc/nixos/modules/programs/zsh/" pkgs.system "-fancy-time.bin"];
-        #   when = true;
-        #   format = "$output";
-        # };
-
         nix_shell.format = "in [$symbol]($style)";
 
         character = {
-          success_symbol = "[❯](teal)";
-          error_symbol = "[❯](maroon)";
-          vimcmd_symbol = "[❮](green)";
+          success_symbol = "[~>](bold teal)";
+          error_symbol = "[/>](bold maroon)";
+          vimcmd_symbol = "[->](bold green)";
         };
 
         directory = {

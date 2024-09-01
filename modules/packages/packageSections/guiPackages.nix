@@ -17,7 +17,6 @@ in {
     hyprlock
     hyprshot
     jdk17
-    xdg-desktop-portal-hyprland
     brightnessctl
     wofi
     alsa-utils
@@ -29,7 +28,6 @@ in {
     swaybg
     libnotify
     zathura
-
     viu
     wf-recorder
     playerctl

@@ -18,6 +18,7 @@ in {
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs customLib outputs; };
           home-manager.users.asynth = import inputs.self.outputs.home-managerModules.default;
+	  home-manager.backupFileExtension = ".bak";
         }
       ];
     };

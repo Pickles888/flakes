@@ -43,7 +43,6 @@ in lib.mkIf osConfig.hyprland.enable {
         };
       };
 
-
       general = {
         gaps_in = "10";
         gaps_out = "10";
