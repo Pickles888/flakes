@@ -16,6 +16,7 @@
 	cssls.enable = true; # css
 	gdscript.enable = true; # godot
 	slint-lsp.enable = true; # slint
+	nushell.enable = true; # nu
       };
     };
 

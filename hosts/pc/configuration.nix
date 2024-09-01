@@ -11,7 +11,8 @@
   workman.enable = true;
   vm.enable = true; # enables qemu vm
   autoUpgrade.enable = true; # Automatically updates the flake every day
-  
+  kitty.fontSize = 14;
+
   gui.enable = true; # enables/disables gui related options by default
 
   hyprland = {

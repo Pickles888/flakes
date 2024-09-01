@@ -3,9 +3,10 @@
   lib,
   pkgs,
   ...
-}: let 
-  extraConfig = builtins.readFile ./config.nu;
-  extraEnv = builtins.readFile ./env.nu;
+}: let
+  getNuFiles = files: lib.concatMapStrings (file: (builtins.readFile file) + "\n") files;
+  extraConfig = getNuFiles [ ./config.nu ];
+  extraEnv = getNuFiles [ ./env.nu ./functions.nu ];
 in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
   programs = {
     nushell = {
