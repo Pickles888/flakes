@@ -1,7 +1,10 @@
 {
-  nixvim, 
+  nixvim,
+  pkgs,
   ...
-}: {
+}: let
+  treesitter-nu-grammar = pkgs.tree-sitter-grammars.tree-sitter-nu;
+in {
   programs.nixvim.plugins = {
     rustaceanvim.enable = true; # rust
     lsp = {
@@ -18,6 +21,15 @@
 	slint-lsp.enable = true; # slint
 	nushell.enable = true; # nu
       };
+    };
+
+
+    treesitter = {
+      enable = true;
+      settings.indent.enable = true;
+      grammarPackages = pkgs.vimPlugins.nvim-treesitter.passthru.allGrammars ++ [
+        treesitter-nu-grammar
+      ];
     };
 
     lsp-format.enable = true;
