@@ -110,6 +110,7 @@ in lib.mkIf osConfig.hyprland.enable {
           "$mainMod, RETURN, exec, kitty"
           "ALT, SPACE, exec, hyprctl switchxkblayout kbdfans-og60-keyboard next" # FIX
           "$mainMod, N, exec, firefox"
+	  "$mainMod, H, exec, kitty ghci"
           "$mainMod, A, exec, swaync-client -t"
 	  "$mainMod, S, exec, iced-todo"
 	  "$mainMod, L, exec, loginctl lock-session"
