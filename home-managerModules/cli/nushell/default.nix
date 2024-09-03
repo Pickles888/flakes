@@ -29,6 +29,7 @@ in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
         eza = "${ez} -T";
         t = "tmux";
 	s = "superfile";
+	gl = ''git log --pretty=%h»¦«%aN»¦«%s»¦«%aD | lines | split column "»¦«" sha1 committer desc merged_at | first 10'';
       } // osConfig.shell.extraAliases;
     };
 
