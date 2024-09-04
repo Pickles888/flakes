@@ -15,6 +15,7 @@
         EndSection
       '';
     }
+
     (lib.mkIf config.hardware.asahi.useExperimentalGPUDriver {
       # install the drivers
       hardware.opengl.package = config.hardware.asahi.pkgs.mesa-asahi-edge.drivers;
