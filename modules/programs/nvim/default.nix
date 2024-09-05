@@ -147,7 +147,7 @@
 
       bufferline = {
         enable = true;
-        offsets = [
+        settings.offsets = [
           {
             filetype = "neo-tree";
             text = "";

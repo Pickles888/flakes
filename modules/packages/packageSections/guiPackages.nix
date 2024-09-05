@@ -22,7 +22,7 @@ in {
     alsa-utils
     xdg-utils
     gnome-calculator
-    gnome.gnome-clocks
+    gnome-clocks
     inkscape
     pavucontrol
     swaybg

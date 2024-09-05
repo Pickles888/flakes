@@ -16,9 +16,7 @@
       peripheralFirmwareDirectory = ./firmware;
     };
     
-    opengl = {
-      enable = true;
-    };
+    graphics.enable = true;
   };
 
 
