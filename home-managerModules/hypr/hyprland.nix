@@ -27,7 +27,12 @@ in lib.mkIf osConfig.hyprland.enable {
         "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
         "xwaylandvideobridge"
       ] ++ osConfig.hyprland.extraConfig.startupApps 
-	++ lib.lists.optionals osConfig.hyprland.hyprlock.asLockscreen [ "loginctl lock-session" ];
+	++ lib.lists.optionals osConfig.hyprland.hyprlock.asLockscreen [ "loginctl lock-session" ]
+	++ lib.lists.optionals osConfig.fcitx.enable [
+	  "fcitx5 -d -r"
+	  "fcitx5-remote -r"  
+	];
+
 
       input = {
         kb_layout = "us,us";
@@ -94,6 +99,9 @@ in lib.mkIf osConfig.hyprland.enable {
       };
 
       layerrule = ["blur,waybar"];
+
+      windowrule = []
+	++ lib.lists.optionals osConfig.fcitx.enable [ "pseudo, fcitx" ];
 
       windowrulev2 = [
         "opacity 0.0 override,class:^(xwaylandvideobridge)$"

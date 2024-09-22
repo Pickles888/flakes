@@ -147,12 +147,12 @@
 
       bufferline = {
         enable = true;
-        settings.offsets = [
+        settings.options.offsets = [
           {
             filetype = "neo-tree";
-            text = "";
-          }
-        ];
+	    text = "";
+	  }
+	];
       };
     };
   };
