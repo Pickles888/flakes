@@ -17,6 +17,7 @@ in {
     hyprlock
     hyprshot
     jdk17
+    anki
     brightnessctl
     wofi
     alsa-utils
