@@ -166,6 +166,12 @@
       };
     };
 
+    fcitx.enable = lib.mkOption {
+      description = "Chinese Keyboard";
+      default = config.gui.enable;
+      type = lib.types.bool;
+    };
+
     ssh = {
       enable = lib.mkOption {
 	description = "Enables SSH";
