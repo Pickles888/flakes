@@ -37,6 +37,7 @@ in lib.mkIf osConfig.hyprland.enable {
       input = {
         kb_layout = "us,us";
         kb_variant = "workman,,";
+	kb_options = "grp:alt_space_toggle";
         follow_mouse = "1";
         accel_profile = "flat";
         sensitivity = "${osConfig.hyprland.sensitivity}";
@@ -116,7 +117,6 @@ in lib.mkIf osConfig.hyprland.enable {
         [
           "$mainMod, F, fullscreen,"
           "$mainMod, RETURN, exec, kitty"
-          "ALT, SPACE, exec, hyprctl switchxkblayout kbdfans-og60-keyboard next" # FIX
           "$mainMod, N, exec, firefox"
 	  "$mainMod, H, exec, kitty ghci"
           "$mainMod, A, exec, swaync-client -t"
