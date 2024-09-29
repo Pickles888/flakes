@@ -22,6 +22,10 @@ def map [
     }
 }
 
+def disown [...command: string] {
+    sh -c '"$@" </dev/null >/dev/null 2>/dev/null & disown' $command.0 ...$command
+}
+
 # Get a list from a range
 def ranlist [
     range: range	# Range to get a list from
