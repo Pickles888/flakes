@@ -17,7 +17,6 @@ in {
     hyprlock
     hyprshot
     jdk17
-    anki
     brightnessctl
     wofi
     alsa-utils
@@ -35,7 +34,6 @@ in {
     hyprshot
     signal-desktop
     nautilus
-    anki
   ])
   ++ lib.lists.optionals config.swaync.enable [ pkgs.swaynotificationcenter ]
   ++ lib.lists.optionals config.waybar.enable [ pkgs.waybar ]

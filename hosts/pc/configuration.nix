@@ -45,5 +45,6 @@
     discord
     via
     vesktop
+    anki
   ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui pkgs.mono ];
 }
