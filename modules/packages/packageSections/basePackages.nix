@@ -24,6 +24,5 @@
     fuse
     fzf
     unzip
-    ghc
   ];
 }
