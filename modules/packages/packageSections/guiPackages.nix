@@ -16,11 +16,6 @@ in {
     firefox
     hyprlock
     hyprshot
-<<<<<<< HEAD
-    jdk17 
-=======
-    jdk17
->>>>>>> 9d2960d1f0c243bc81fca0064e515e308121a8d9
     brightnessctl
     wofi
     alsa-utils
@@ -38,11 +33,8 @@ in {
     hyprshot
     signal-desktop
     nautilus
-<<<<<<< HEAD
     anki-bin
     jq # required by waybar/cava.sh
-=======
->>>>>>> 9d2960d1f0c243bc81fca0064e515e308121a8d9
   ])
   ++ lib.lists.optionals config.swaync.enable [ pkgs.swaynotificationcenter ]
   ++ lib.lists.optionals config.waybar.enable [ pkgs.waybar ]
