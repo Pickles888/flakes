@@ -17,7 +17,6 @@ in {
 	marksman.enable = true; # markdown
 	pylsp.enable = true; # python
 	cssls.enable = true; # css
-	gdscript.enable = true; # godot
 	nushell.enable = true; # nu
       };
     };

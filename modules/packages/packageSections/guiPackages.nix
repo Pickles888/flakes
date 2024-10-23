@@ -33,7 +33,6 @@ in {
     hyprshot
     signal-desktop
     nautilus
-    anki-bin
     jq # required by waybar/cava.sh
   ])
   ++ lib.lists.optionals config.swaync.enable [ pkgs.swaynotificationcenter ]

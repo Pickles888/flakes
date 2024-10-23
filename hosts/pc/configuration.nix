@@ -48,7 +48,7 @@
     discord
     via
     vesktop
-    anki
+    anki-bin
   ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui pkgs.mono ];
 
   # Sunshine
