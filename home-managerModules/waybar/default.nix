@@ -85,7 +85,8 @@
 	  "custom/date": {
 	      "format": "{}",
 	      "exec": " date +' %a %d %b' ",
-	      "tooltip": false
+	      "tooltip": false,
+	      "interval": 10
 	  },
 
 	  "clock": {
