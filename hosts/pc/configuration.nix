@@ -15,6 +15,8 @@
 
   gui.enable = true; # enables/disables gui related options by default
 
+  waybar.mediaMaxLength = 100;
+
   hyprland = {
     sensitivity = "0.2";
     display = "DP-1,1920x1080@240,0x0,1";
@@ -32,7 +34,8 @@
 
   firewall = {
     allowedUDPPorts = [161 162 9100 427 5353];
-    allowedTCPPorts = [161 162 9100];
+    allowedTCPPorts = [161 162 9100]
+      ++ [ 47984 47989 47990 48010 ]; # sunshine ports
   };
 
   location = {
@@ -46,4 +49,17 @@
     via
     vesktop
   ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui pkgs.mono ];
+
+  # Sunshine
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
+  networking.firewall.allowedUDPPortRanges = [
+    { from = 47998; to = 48000; }
+    { from = 8000; to = 8010; }
+  ];
 }

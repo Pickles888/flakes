@@ -1,5 +1,5 @@
 {...}: {
   home.file.".ghci".text = ''
-    :set prompt "\x1b[36m \x1b[37m"
+    :set prompt "\x1b[36mλ> \x1b[37m"
   '';
 }

@@ -7,7 +7,7 @@
     ./swaync.nix
     ./cursor.nix
     ./anyrun.nix
-    ./waybar.nix
+    ./waybar
   ];
 
   home = {

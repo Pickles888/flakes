@@ -4,6 +4,10 @@
   ...
 }: lib.mkIf osConfig.waybar.enable {
   xdg.configFile = {
+    "waybar/caway.sh" = {
+      source = ./caway.sh;
+    };
+
     "waybar/config.jsonc".text = ''
       {
 	  // "layer": "top", // Waybar at top layer
@@ -16,7 +20,7 @@
 	  "modules-left": [
 	      "custom/nixos",
 	      "hyprland/workspaces",
-	      "custom/media"
+	      "custom/caway"
 	  ],
 	  "modules-right": [
 	      "pulseaudio",
@@ -59,6 +63,23 @@
 	      "on-click": "playerctl play-pause",
 	      "on-scroll-up": "playerctl volume 0.05+",
 	      "on-scroll-down": "playerctl volume 0.05-"
+	  },
+
+	  "custom/caway": {
+	      "max-length": ${toString osConfig.waybar.mediaMaxLength},
+	      "format": "{icon} {}",
+	      "format-icons": {
+		  "Playing": "", // Uncomment if not using caway
+		  "Paused": "",
+	      },
+	      "escape": true,
+	      "tooltip": true,
+	      "exec": "~/.config/waybar/caway.sh -f 120 -b 12",
+	      "return-type": "json",
+	      "hide-empty-text": true,
+	      "on-click": "playerctl play-pause",
+	      "on-scroll-up": "playerctl volume 0.05+",
+	      "on-scroll-down": "playerctl volume 0.05-",
 	  },
 
 	  "custom/date": {
@@ -239,7 +260,8 @@
       #idle_inhibitor,
       #scratchpad,
       #power-profiles-daemon,
-      #mpd {
+      #mpd,
+      #custom-caway {
 	  box-shadow: 0px 0px 3px @crust;
 	  color: @text;
 	  background-color: @crust;
@@ -272,6 +294,25 @@
       /* If workspaces is the rightmost module, omit right margin */
       .modules-right > widget:last-child > #workspaces {
 	  margin-right: 0;
+      }
+
+      #custom-caway {  
+	padding-right: 17px;
+	transition: all 0.4s ease-in-out;
+      }
+
+      #custom-caway.Playing {
+	  background: rgb(137, 180, 250);
+	  background: radial-gradient(circle, rgba(137, 180, 250, 120) 0%, rgba(142, 179, 250, 120) 6%, rgba(148, 226, 213, 1) 14%, rgba(147, 178, 250, 1) 14%, rgba(155, 176, 249, 1) 18%, rgba(245, 194, 231, 1) 28%, rgba(158, 175, 249, 1) 28%, rgba(181, 170, 248, 1) 58%, rgba(205, 214, 244, 1) 69%, rgba(186, 169, 248, 1) 69%, rgba(195, 167, 247, 1) 72%, rgba(137, 220, 235, 1) 73%, rgba(198, 167, 247, 1) 78%, rgba(203, 166, 247, 1) 100%);
+	  color: @crust;
+	  font-weight: bold;
+	  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.377);
+	  background-size: 400% 400%;
+      }
+
+      #custom-music.Paused,
+      #custom-music.Stopped {
+	  color: @text;
       }
     '';
   }; 
