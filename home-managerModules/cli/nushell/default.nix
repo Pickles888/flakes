@@ -7,6 +7,13 @@
   getNuFiles = files: lib.concatMapStrings (file: (builtins.readFile file) + "\n") files;
   extraConfig = getNuFiles [ ./config.nu ];
   extraEnv = getNuFiles [ ./env.nu ./functions.nu ];
+
+  # functions dependent on nix variables
+  nixFunctions = ''
+    def gh-clone [repository] { 
+      git clone $"https://github.com/${osConfig.git.userName}/($repository)"
+    } 
+  '';
 in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
   programs = {
     nushell = {
@@ -20,7 +27,7 @@ in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
 	}
       '';
 
-      extraEnv = extraEnv;
+      extraEnv = lib.strings.concatStrings [extraEnv nixFunctions];
 
       shellAliases = rec {
 	c = "clear";
@@ -29,7 +36,6 @@ in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
         eza = "${ez} -T";
         t = "tmux";
 	s = "superfile";
-	gl = ''git log --pretty=%h»¦«%aN»¦«%s»¦«%aD | lines | split column "»¦«" sha1 committer desc merged_at | first 10'';
       } // osConfig.shell.extraAliases;
     };
 
