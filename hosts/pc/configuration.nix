@@ -19,7 +19,7 @@
 
   hyprland = {
     sensitivity = "0.2";
-    display = "DP-1,1920x1080@240,0x0,1";
+    display = "DP-1,1920x1080@240,0x0,1,vrr,1";
   };
   
   git = {
