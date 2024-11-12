@@ -31,7 +31,7 @@
   hyprland = {
    sensitivity = "0";
    unstable = false;
-   display = ",highres,auto,2";
+   display = ",highres,auto,1.6,vrr,1";
    hyprlock.suspend = true;
  };
 

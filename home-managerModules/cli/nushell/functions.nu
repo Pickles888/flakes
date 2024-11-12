@@ -32,3 +32,13 @@ def ranlist [
 ] {
     $range | each {||}
 }
+
+def getSize [
+    p?: path	# path to the thing you are getting the size of
+] {
+    (if ($p == null) {
+	ls ./**/*
+    } else {
+	ls ($p | path join **/* | path expand)
+    }) | where type != dir | get size | math sum
+}
