@@ -1,11 +1,18 @@
-{...}: {
+{
+  config,
+  ...
+}: {
   imports = [
     ./bluetooth.nix
     ./audio.nix
     ./firewall.nix
-    ./xserver.nix
-    ./printing.nix
     ./autologin.nix
     ./wifi.nix
   ];
+
+  services = {
+    flatpak.enable = config.gui.enable;
+    printing.enable = config.gui.enable;
+    xserver.enable = false;
+  };
 }
