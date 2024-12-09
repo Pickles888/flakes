@@ -10,7 +10,6 @@ in {
     cava
     superfile
     yt-dlp
-    lumafly
     xwaylandvideobridge
     hypridle
     firefox

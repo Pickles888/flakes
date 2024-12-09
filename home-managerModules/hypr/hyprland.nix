@@ -65,11 +65,16 @@ in lib.mkIf osConfig.hyprland.enable {
           size = "4";
           passes = "5";
         };
-
-        drop_shadow = "no";
+	
+	shadow = {
+	    enabled = false;
+	};
+    
         active_opacity = "0.9";
         inactive_opacity = "0.7";
       };
+
+      render.explicit_sync = 0; # honeykrisp...
 
       animations = {
         enabled = "yes";

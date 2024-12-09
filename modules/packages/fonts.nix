@@ -5,7 +5,6 @@
   ...
 }: lib.mkIf config.fontPackages.enable {
   fonts.packages = (with pkgs; [
-    nerdfonts
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
@@ -16,5 +15,6 @@
     dina-font
     proggyfonts
     aileron
-  ]) ++ config.fontPackages.extraFonts;
+  ]) ++ config.fontPackages.extraFonts
+     ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }

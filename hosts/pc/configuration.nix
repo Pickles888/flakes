@@ -49,6 +49,7 @@
     via
     vesktop
     anki-bin
+    lumafly
   ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui pkgs.mono ];
 
   # Sunshine
@@ -62,5 +63,12 @@
   networking.firewall.allowedUDPPortRanges = [
     { from = 47998; to = 48000; }
     { from = 8000; to = 8010; }
+  ];
+
+  # fix lumafly
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-runtime-7.0.20" # broken af
+    "dotnet-sdk-wrapped-7.0.410" # also broken af
+    "dotnet-sdk-7.0.410"
   ];
 }

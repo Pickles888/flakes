@@ -43,5 +43,6 @@
  packages.extraPackages = with pkgs; [
   dissent
   mesa-asahi-edge
+  distrobox
  ];
 }
