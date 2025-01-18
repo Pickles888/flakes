@@ -13,8 +13,9 @@ in {
     xwaylandvideobridge
     hypridle
     firefox
-    amberol
     hyprlock
+    gnome-music
+    gapless
     hyprshot
     brightnessctl
     wofi

@@ -66,10 +66,6 @@ in lib.mkIf osConfig.hyprland.enable {
           passes = "5";
         };
 	
-	shadow = {
-	    enabled = false;
-	};
-    
         active_opacity = "0.9";
         inactive_opacity = "0.7";
       };
@@ -110,13 +106,7 @@ in lib.mkIf osConfig.hyprland.enable {
       windowrule = []
 	++ lib.lists.optionals osConfig.fcitx.enable [ "pseudo, fcitx" ];
 
-      windowrulev2 = [
-        "opacity 0.0 override,class:^(xwaylandvideobridge)$"
-        "noanim,class:^(xwaylandvideobridge)$"
-        "noinitialfocus,class:^(xwaylandvideobridge)$"
-        "maxsize 1 1,class:^(xwaylandvideobridge)$"
-        "noblur,class:^(xwaylandvideobridge)$"
-      ] ++ osConfig.hyprland.extraConfig.windowRules;
+      windowrulev2 = [] ++ osConfig.hyprland.extraConfig.windowRules;
 
       "$mainMod" = "SUPER";
       bind =
