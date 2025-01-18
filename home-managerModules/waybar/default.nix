@@ -8,13 +8,12 @@
       source = ./caway.sh;
     };
 
-<<<<<<< HEAD
     "waybar/jpTime.hs" = {
       source = ./jpTime.hs;
-=======
-    "waybar/JPDate.hs" = {
+    };
+    
+      "waybar/JPDate.hs" = {
       source = ./JPDate.hs;
->>>>>>> 964b5ad04e4bd81ebcffef482aeb4bb4d8dd1df4
     };
 
     "waybar/config.jsonc".text = ''
