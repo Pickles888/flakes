@@ -86,21 +86,25 @@ let
     (linuxKernel.manualConfig rec {
       inherit stdenv lib;
 
-      version = "6.9.9-asahi";
+      version = "6.10.6-asahi";
       modDirVersion = version;
-      extraMeta.branch = "6.9";
+      extraMeta.branch = "6.10";
 
       src = fetchFromGitHub {
         # tracking: https://github.com/AsahiLinux/linux/tree/asahi-wip (w/ fedora verification)
         owner = "AsahiLinux";
         repo = "linux";
-        rev = "asahi-6.9.9-7";
-        hash = "sha256-vQTzs5oT5daARTnv0qLcQXO/hCe8sMALJbYTr6iFCPE=";
+        rev = "asahi-6.10.6-1";
+        hash = "sha256-qm+0YYHehR2GP/MNAnTSPCBhb1vpnR50bbpfap74BRc=";
       };
 
       kernelPatches = [
         { name = "coreutils-fix";
           patch = ./0001-fs-fcntl-accept-more-values-as-F_DUPFD_CLOEXEC-args.patch;
+        }
+      ] ++ lib.optionals (rustAtLeast "1.82.0") [
+        { name = "rustc_1.82.0";
+          patch = ./rustc_1.82.0.patch;
         }
       ] ++ _kernelPatches;
 

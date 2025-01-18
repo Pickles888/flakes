@@ -8,8 +8,13 @@
       source = ./caway.sh;
     };
 
+<<<<<<< HEAD
     "waybar/jpTime.hs" = {
       source = ./jpTime.hs;
+=======
+    "waybar/JPDate.hs" = {
+      source = ./JPDate.hs;
+>>>>>>> 964b5ad04e4bd81ebcffef482aeb4bb4d8dd1df4
     };
 
     "waybar/config.jsonc".text = ''
@@ -30,7 +35,7 @@
 	      "pulseaudio",
 	      "network",
 	      "battery",
-	      "custom/date",
+	      "custom/jpdate",
 	      "clock"
 	  ],
 
@@ -41,7 +46,16 @@
 	       "warp-on-scroll": false,
 	       "format": "{icon}",
 	       "format-icons": {
-		   "urgent": "",
+		   "1": "一",
+		   "2": "二",
+		   "3": "三",
+		   "4": "四",
+		   "5": "五",
+		   "6": "六",
+		   "7": "七",
+		   "8": "八",
+		   "9": "九",
+		   "10": "十",
 		   "default": ""
 	       },
 
@@ -67,6 +81,12 @@
 	      "on-click": "playerctl play-pause",
 	      "on-scroll-up": "playerctl volume 0.05+",
 	      "on-scroll-down": "playerctl volume 0.05-"
+	  },
+
+	  "custom/jpdate": {
+	      "format": " {}",
+	      "interval": 120,
+	      "exec": "runghc ~/.config/waybar/JPDate.hs"
 	  },
 
 	  "custom/caway": {
@@ -216,7 +236,7 @@
 
 
       #workspaces button {
-	  padding: 0 3px;
+	  padding: 0 2px;
 	  background-color: transparent;
 	  color: @text;
       }
@@ -266,6 +286,7 @@
       #scratchpad,
       #power-profiles-daemon,
       #mpd,
+      #custom-jpdate,
       #custom-caway {
 	  box-shadow: 0px 0px 3px @crust;
 	  color: @text;
@@ -277,7 +298,7 @@
 
       #window,
       #workspaces {
-	  font-size: 13px;
+	  font-size: 15px;
 	  background-color: @crust;
 	  box-shadow: 0px 0px 3px @crust;
 	  border-radius: 100px;

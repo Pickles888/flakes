@@ -7,6 +7,7 @@
   ...
 }: let
   resize = key: val: "$mainMod CONTROL, ${key}, resizeactive, ${val}";
+  ankiCmd = "nix run nixpkgs#anki -- --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
 in lib.mkIf osConfig.hyprland.enable {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -30,7 +31,7 @@ in lib.mkIf osConfig.hyprland.enable {
 	++ lib.lists.optionals osConfig.hyprland.hyprlock.asLockscreen [ "loginctl lock-session" ]
 	++ lib.lists.optionals osConfig.fcitx.enable [
 	  "fcitx5 -d -r"
-	  "fcitx5-remote -r"  
+	  "fcitx5-remote -r" 
 	];
 
 
@@ -64,11 +65,16 @@ in lib.mkIf osConfig.hyprland.enable {
           size = "4";
           passes = "5";
         };
-
-        drop_shadow = "no";
+	
+	shadow = {
+	    enabled = false;
+	};
+    
         active_opacity = "0.9";
         inactive_opacity = "0.7";
       };
+
+      render.explicit_sync = 0; # honeykrisp...
 
       animations = {
         enabled = "yes";
@@ -117,8 +123,9 @@ in lib.mkIf osConfig.hyprland.enable {
         [
           "$mainMod, F, fullscreen,"
           "$mainMod, RETURN, exec, kitty"
+	  "$mainMod, P, exec, kitty ${ankiCmd}"
           "$mainMod, N, exec, firefox"
-	  "$mainMod, H, exec, kitty ghci"
+	  "$mainMod, H, exec, kitty nix run nixpkgs#ghci"
           "$mainMod, A, exec, swaync-client -t"
 	  "$mainMod, S, exec, iced-todo"
 	  "$mainMod, L, exec, loginctl lock-session"

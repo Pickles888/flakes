@@ -21,7 +21,7 @@
 
   hyprland = {
     sensitivity = "0.2";
-    display = "DP-1,1920x1080@240,0x0,1";
+    display = "DP-1,1920x1080@240,0x0,1,vrr,1";
   };
   
   git = {
@@ -53,6 +53,7 @@
     anki-bin
     davinci-resolve
     ghc
+    lumafly
   ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui pkgs.mono ];
 
   # Sunshine
@@ -66,5 +67,12 @@
   networking.firewall.allowedUDPPortRanges = [
     { from = 47998; to = 48000; }
     { from = 8000; to = 8010; }
+  ];
+
+  # fix lumafly
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-runtime-7.0.20" # broken af
+    "dotnet-sdk-wrapped-7.0.410" # also broken af
+    "dotnet-sdk-7.0.410"
   ];
 }

@@ -18,6 +18,7 @@ in {
 	pylsp.enable = true; # python
 	cssls.enable = true; # css
 	nushell.enable = true; # nu
+	gopls.enable = true; # go (google ew)
       };
     };
 
