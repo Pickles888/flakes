@@ -17,6 +17,8 @@
 
   waybar.mediaMaxLength = 100;
 
+  hardware.amdgpu.opencl.enable = true;
+
   hyprland = {
     sensitivity = "0.2";
     display = "DP-1,1920x1080@240,0x0,1";
@@ -49,6 +51,8 @@
     via
     vesktop
     anki-bin
+    davinci-resolve
+    ghc
   ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui pkgs.mono ];
 
   # Sunshine

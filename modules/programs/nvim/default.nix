@@ -119,7 +119,6 @@
 	  added = "";
 
 	  modified = "";
-	  modifiedAbove = "";
 	  modifiedRemoved = "󰍷";
 
 	  removed = "";

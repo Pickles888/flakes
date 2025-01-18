@@ -14,5 +14,6 @@
     flatpak.enable = config.gui.enable;
     printing.enable = config.gui.enable;
     xserver.enable = false;
+    ratbagd.enable = config.gui.enable;
   };
 }

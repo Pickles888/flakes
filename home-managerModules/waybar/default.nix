@@ -8,6 +8,10 @@
       source = ./caway.sh;
     };
 
+    "waybar/jpTime.hs" = {
+      source = ./jpTime.hs;
+    };
+
     "waybar/config.jsonc".text = ''
       {
 	  // "layer": "top", // Waybar at top layer

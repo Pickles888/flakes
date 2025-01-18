@@ -14,6 +14,7 @@ in {
     xwaylandvideobridge
     hypridle
     firefox
+    amberol
     hyprlock
     hyprshot
     brightnessctl
