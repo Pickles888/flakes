@@ -106,7 +106,14 @@ in lib.mkIf osConfig.hyprland.enable {
       windowrule = []
 	++ lib.lists.optionals osConfig.fcitx.enable [ "pseudo, fcitx" ];
 
-      windowrulev2 = [] ++ osConfig.hyprland.extraConfig.windowRules;
+      windowrulev2 = [
+	  "opacity 0.0 override, class:^(xwaylandvideobridge)$"
+	  "noanim, class:^(xwaylandvideobridge)$"
+	  "noinitialfocus, class:^(xwaylandvideobridge)$"
+	  "maxsize 1 1, class:^(xwaylandvideobridge)$"
+	  "noblur, class:^(xwaylandvideobridge)$"
+	  "nofocus, class:^(xwaylandvideobridge)$"
+	] ++ osConfig.hyprland.extraConfig.windowRules;
 
       "$mainMod" = "SUPER";
       bind =

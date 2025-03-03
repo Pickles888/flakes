@@ -14,8 +14,7 @@ in {
     hypridle
     firefox
     hyprlock
-    gnome-music
-    gapless
+    amberol
     hyprshot
     brightnessctl
     wofi
@@ -34,6 +33,7 @@ in {
     hyprshot
     signal-desktop
     nautilus
+    gnome-music
     jq # required by waybar/cava.sh
   ])
   ++ lib.lists.optionals config.swaync.enable [ pkgs.swaynotificationcenter ]
