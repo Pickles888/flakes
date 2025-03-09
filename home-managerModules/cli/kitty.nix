@@ -17,6 +17,6 @@
       enabled_layouts = "splits:split_axis=horizontal";
     };
 
-    theme = "Catppuccin-Frappe";
+    theme = "Gruvbox Dark";
   };
 }

@@ -88,23 +88,31 @@
       type = lib.types.bool;
     };
 
-    hyprland = {
+    sway.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = config.gui.enable;
+      description = "Enables sway";
+    };
+
+    hyprland = let
+      hyprEnabled = config.gui.enable && config.hyprland.enable;
+    in {
       enable = lib.mkOption {
 	type = lib.types.bool;
-	default = config.gui.enable;
+	default = false;
 	description = "Enables hyprland";
       };
 
       unstable = lib.mkOption {
 	type = lib.types.bool;
-	default = config.gui.enable;
+	default = hyprEnabled;
 	description = "Enables hyprland unstable";
       };
       
       hyprlock = {
 	enable = lib.mkOption {
 	  type = lib.types.bool;
-	  default = config.hyprland.enable;
+	  default = hyprEnabled;
 	  description = "Locks computer after ${config.hyprland.hypridle.timeoutSecs}";
 	};
 
@@ -167,7 +175,7 @@
     };
 
     fcitx.enable = lib.mkOption {
-      description = "Chinese Keyboard";
+      description = "Chinese + Japanese Keyboard";
       default = config.gui.enable;
       type = lib.types.bool;
     };
@@ -330,5 +338,6 @@
 
   config = {
     networking.hostName = config.hostName;
+    security.polkit.enable = config.sway.enable; 
   };
 }

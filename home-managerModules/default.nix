@@ -8,6 +8,7 @@
     ./cursor.nix
     ./anyrun.nix
     ./waybar
+    ./sway.nix
   ];
 
   home = {

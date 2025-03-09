@@ -8,14 +8,6 @@
       source = ./caway.sh;
     };
 
-    "waybar/jpTime.hs" = {
-      source = ./jpTime.hs;
-    };
-    
-      "waybar/JPDate.hs" = {
-      source = ./JPDate.hs;
-    };
-
     "waybar/config.jsonc".text = ''
       {
 	  // "layer": "top", // Waybar at top layer
@@ -43,20 +35,6 @@
 	       "disable-scroll": true,
 	       "all-outputs": true,
 	       "warp-on-scroll": false,
-	       "format": "{icon}",
-	       "format-icons": {
-		   "1": "一",
-		   "2": "二",
-		   "3": "三",
-		   "4": "四",
-		   "5": "五",
-		   "6": "六",
-		   "7": "七",
-		   "8": "八",
-		   "9": "九",
-		   "10": "十",
-		   "default": ""
-	       },
 
 	      "persistent-workspaces": { "*": 5 }
 	  },
@@ -80,12 +58,6 @@
 	      "on-click": "playerctl play-pause",
 	      "on-scroll-up": "playerctl volume 0.05+",
 	      "on-scroll-down": "playerctl volume 0.05-"
-	  },
-
-	  "custom/jpdate": {
-	      "format": " {}",
-	      "interval": 120,
-	      "exec": "runghc ~/.config/waybar/JPDate.hs"
 	  },
 
 	  "custom/caway": {

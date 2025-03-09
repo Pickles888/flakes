@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.tmux = {
     enable = true;
-    shell = "${pkgs.zsh}/bin/zsh";
+    shell = "${pkgs.nushell}/bin/nu";
     terminal = "kitty";
     shortcut = "Space";
     historyLimit = 100000;

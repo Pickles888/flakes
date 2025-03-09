@@ -8,13 +8,8 @@
   gtk = {
     enable = true;
     theme = {
-      name = "catppuccin-frappe-pink-standard+normal,rimless";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["pink"];
-        size = "standard";
-        tweaks = ["normal" "rimless"];
-        variant = "frappe";
-      };
+      name = "Gruvbox-Dark";
+      package = pkgs.gruvbox-gtk-theme;
     };
 
     font = {
