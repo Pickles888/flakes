@@ -36,7 +36,7 @@
 
     musicManager.enable = lib.mkOption {
       type = lib.type.bool;
-      defualt = false;
+      default = false;
       description = "Custom made music manager with nushell :P + FZF";
     };
 
