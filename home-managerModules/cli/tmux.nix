@@ -8,10 +8,9 @@
     plugins = with pkgs; [
       tmuxPlugins.sensible
       {
-        plugin = tmuxPlugins.catppuccin;
+        plugin = tmuxPlugins.gruvbox;
         extraConfig = ''
-          set -g @catppuccin_flavour 'frappe'
-          set -g @catppuccin_window_default_fill "number"
+          set -g @tmux-gruvbox 'dark256'
         '';
       }
     ];

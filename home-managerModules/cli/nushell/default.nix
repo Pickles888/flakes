@@ -6,7 +6,8 @@
 }: let
   getNuFiles = files: lib.concatMapStrings (file: (builtins.readFile file) + "\n") files;
   extraConfig = getNuFiles [ ./config.nu ];
-  extraEnv = getNuFiles [ ./env.nu ./functions.nu ];
+  extraEnv = getNuFiles [ ./env.nu ./functions.nu ]
+    ++ lib.lists.optionals osConfig.musicManager.enable [ ./music.nu ];
 
   # functions dependent on nix variables
   nixFunctions = ''
@@ -19,16 +20,17 @@ in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
     nushell = {
       enable = true;
       extraConfig = extraConfig;
-      extraLogin = lib.mkIf osConfig.hyprland.enable ''
+      extraLogin = ''
 	if (tty) == "/dev/tty1" {
-	  exec Hyprland
-	} else {
-	  nitch	
+	  ${if osConfig.sway.enable then "exec sway"
+	    else if osConfig.hyprland.enable then "exec Hyprland"
+            else ""
+	  };
 	}
       '';
 
       extraEnv = lib.strings.concatStrings [extraEnv nixFunctions];
-
+      
       shellAliases = rec {
 	c = "clear";
 	cdf = "cd ${osConfig.flakePath}";
@@ -36,6 +38,7 @@ in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
         eza = "${ez} -T";
         t = "tmux";
 	s = "superfile";
+	mpvl = "mpv --loop-playlist=inf ";
       } // osConfig.shell.extraAliases;
     };
 
@@ -63,7 +66,7 @@ in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
         };
 
         palettes = {
-          catppuccin_frappe = {
+          gruvbox_dark = {
             maroon = "#ea999c";
             green = "#a6d189";
             teal = "#81c8be";

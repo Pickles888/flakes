@@ -2,6 +2,8 @@
   nixvim, 
   inputs, 
   pkgs, 
+  config,
+  lib,
   ...
 }: {
   imports = [
@@ -11,7 +13,7 @@
     ./lualine.nix
   ];
 
-  programs.nixvim = {
+  programs.nixvim = lib.mkIf config.nvim.enable {
     extraPlugins = [
       (pkgs.vimUtils.buildVimPlugin { 
 	name = "markdown.nvim";
@@ -61,7 +63,7 @@
     };
 
     colorschemes.catppuccin = {
-      enable = true;
+      enable = true; 
       settings.flavour = "frappe";
     };
 

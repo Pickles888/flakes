@@ -13,7 +13,7 @@
     };
 
     font = {
-      name = "Aileron, Bold";
+      name = "Jetbrains Mono, Bold";
       size = osConfig.gtk.fontSize;
     };
 

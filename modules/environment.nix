@@ -1,7 +1,7 @@
 {...}: {
   environment = {
     variables = {
-      EDITOR = "nvim";
+      EDITOR = "kak";
       TERM = "kitty";
     };
 

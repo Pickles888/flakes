@@ -22,6 +22,24 @@
       description = "Enables the gui";
     };
 
+    nvim.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enables neovim";
+    };
+
+    kakoune.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Enables the Kakoune Editor";
+    };
+
+    musicManager.enable = lib.mkOption {
+      type = lib.type.bool;
+      defualt = false;
+      description = "Custom made music manager with nushell :P + FZF";
+    };
+
     gtk = {
       enable = lib.mkOption {
 	type = lib.types.bool;
@@ -303,7 +321,7 @@
     waybar = {
       enable = lib.mkOption {
 	type = lib.types.bool;
-	default = config.gui.enable;
+	default = config.gui.enable && config.hyprland.enable;
       };
 
       textSize = lib.mkOption {

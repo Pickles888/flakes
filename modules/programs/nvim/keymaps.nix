@@ -1,4 +1,8 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}: lib.mkIf config.nvim.enable {
   programs.nixvim.keymaps = [
     {
       action = "<cmd>Neotree reveal<cr>";

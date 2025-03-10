@@ -1,10 +1,12 @@
 {
+  lib,
+  config,
   nixvim,
   pkgs,
   ...
 }: let
   treesitter-nu-grammar = pkgs.tree-sitter-grammars.tree-sitter-nu;
-in {
+in lib.mkIf config.nvim.enable {
   programs.nixvim.plugins = {
     rustaceanvim.enable = true; # rust
     lsp = {

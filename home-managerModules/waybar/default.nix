@@ -10,7 +10,7 @@
 
     "waybar/config.jsonc".text = ''
       {
-	  // "layer": "top", // Waybar at top layer
+	  // "layer": "bottom", // Waybar at top layer
 	  // "position": "bottom", // Waybar position (top|bottom|left|right)
 	  //"height": 0, // Waybar height (to be removed for auto height)
 	  // "width": 1280, // Waybar width

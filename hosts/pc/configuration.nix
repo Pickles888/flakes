@@ -12,6 +12,7 @@
   vm.enable = true; # enables qemu vm
   autoUpgrade.enable = true; # Automatically updates the flake every day
   kitty.fontSize = 13;
+  nvim.enable = true;
 
   gui.enable = true; # enables/disables gui related options by default
 
@@ -36,8 +37,7 @@
 
   firewall = {
     allowedUDPPorts = [161 162 9100 427 5353];
-    allowedTCPPorts = [161 162 9100]
-      ++ [ 47984 47989 47990 48010 ]; # sunshine ports
+    allowedTCPPorts = [161 162 9100];
   };
 
   location = {
@@ -51,18 +51,9 @@
     via
     vesktop
     anki-bin
-    davinci-resolve
     ghc
     lumafly
   ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui pkgs.mono ];
-
-  # Sunshine
-  services.sunshine = {
-    enable = true;
-    autoStart = true;
-    capSysAdmin = true;
-    openFirewall = true;
-  };
 
   networking.firewall.allowedUDPPortRanges = [
     { from = 47998; to = 48000; }

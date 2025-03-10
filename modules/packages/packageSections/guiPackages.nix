@@ -8,7 +8,7 @@
 in {
   guiPackages = (with pkgs; [
     yt-dlp
-    xwaylandvideobridge
+    kdePackages.xwaylandvideobridge
     firefox
     amberol
     brightnessctl
@@ -29,16 +29,20 @@ in {
     ]
   ++ lib.lists.optionals config.waybar.enable (with pkgs; [ 
       waybar
-      cava
-      playerctl
       jq # required by waybar/cava.sh
     ])
   ++ lib.lists.optionals config.hyprland.enable (with pkgs; [
       hyprshot
       hyprlock
       hypridle
-      swaybg
     ])
+  ++ lib.lists.optionals config.sway.enable (with pkgs; [
+      slurp
+      grim
+      wl-clipboard
+    ])
+  ++ lib.lists.optionals (config.hyprland.enable || config.sway.enable) [pkgs.swaybg]
+  ++ lib.lists.optionals (config.waybar.enable || config.sway.enable || config.hyprland.enable) [pkgs.playerctl]
   ++ [ inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins ]
   ++ [ iced-todo ];
 }

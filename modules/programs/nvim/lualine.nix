@@ -1,7 +1,9 @@
 {
+  config,
+  lib,
   nixvim, 
   ...
-}: {
+}: lib.mkIf config.nvim.enable {
   programs.nixvim.plugins.lualine = {
     enable = true;
     globalstatus = true;

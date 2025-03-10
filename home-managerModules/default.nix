@@ -5,10 +5,11 @@
     ./gtk.nix
     ./hypr  
     ./swaync.nix
-    ./cursor.nix
     ./anyrun.nix
     ./waybar
     ./sway.nix
+    ./mpv.nix
+    ./kakoune.nix
   ];
 
   home = {

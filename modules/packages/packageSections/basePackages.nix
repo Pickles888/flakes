@@ -1,6 +1,11 @@
-{pkgs}: {
+{
+  pkgs,
+  config,
+  lib
+}: {
   basePackages = with pkgs; [
     eza
+    cava
     ripgrep
     fd
     dust
@@ -9,7 +14,6 @@
     wget
     git
     cmus
-    mpv
     killall
     libarchive
     sshfs
@@ -17,7 +21,6 @@
     ffmpeg
     nil
     nh
-    neovim
     nitch
     nix-output-monitor
     himalaya
@@ -25,5 +28,7 @@
     fzf
     unzip
     ghc
-  ];
+  ] ++ lib.lists.optionals config.kakoune.enable (with pkgs;
+      [kakoune kakoune-lsp]
+    );
 }
