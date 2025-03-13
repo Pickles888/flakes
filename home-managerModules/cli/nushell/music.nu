@@ -2,7 +2,7 @@ def getFuzzyMatched [
   path: path
   matched: string
 ] {
-  ls $path | get name | where {|y| $y =~ $matched} | get 0
+  ls $path | get name | where {|y| $matched in $y} | get 0
 }
 
 def runPlaylist [
@@ -10,9 +10,9 @@ def runPlaylist [
   loop: bool
 ] {
   if $loop {
-    bash -c $"mpv --loop-playlist=inf --playlist=<\(find ($path) -type f -iregex \'.*\\.\\\(mp3\\|flac\\|wav\\|ogg\\\)\'\)" # looks cursed af
+    bash -c $"mpv --loop-playlist=inf --playlist=<\(find \'($path)\' -type f -iregex \'.*\\.\\\(mp3\\|flac\\|wav\\|m4a\\|ogg\\\)\'\)" # looks cursed af
   } else {
-    bash -c $"mpv --playlist=<\(find ($path) -type f -iregex \'.*\\.\\\(mp3\\|flac\\|wav\\|ogg\\\)\'\)" # looks cursed af
+    bash -c $"mpv --playlist=<\(find \'($path)\' -type f -iregex \'.*\\.\\\(mp3\\|flac\\|wav\\|m4a\\|ogg\\\)\'\)" # looks cursed af
   }
 }
 

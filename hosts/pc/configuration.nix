@@ -14,6 +14,8 @@
   kitty.fontSize = 13;
   nvim.enable = true;
 
+  musicManager.enable = true;
+
   gui.enable = true; # enables/disables gui related options by default
 
   waybar.mediaMaxLength = 100;

@@ -6,8 +6,8 @@
 }: let
   getNuFiles = files: lib.concatMapStrings (file: (builtins.readFile file) + "\n") files;
   extraConfig = getNuFiles [ ./config.nu ];
-  extraEnv = getNuFiles [ ./env.nu ./functions.nu ]
-    ++ lib.lists.optionals osConfig.musicManager.enable [ ./music.nu ];
+  extraEnv = getNuFiles ([ ./env.nu ./functions.nu ]
+    ++ lib.lists.optionals osConfig.musicManager.enable [ ./music.nu ]);
 
   # functions dependent on nix variables
   nixFunctions = ''
