@@ -18,10 +18,10 @@
       max_entries: None,
       plugins: [
         "libapplications.so",
-	"librink.so",
-	"libshell.so",
-	"libtranslate.so",
-	"libdictionary.so"
+      	"librink.so",
+      	"libshell.so",
+      	"libtranslate.so",
+      	"libdictionary.so"
       ],
     )
   '';

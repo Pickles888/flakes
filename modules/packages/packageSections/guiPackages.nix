@@ -3,9 +3,12 @@
   config, 
   lib,
   inputs
-}: let
-  iced-todo = pkgs.callPackage ../customPackages/iced_todo.nix {};
-in {
+}:
+let
+  #iced-todo = pkgs.callPackage ../customPackages/iced_todo.nix {};
+  tilp2 = pkgs.callPackage ../customPackages/tilp2.nix {};
+in
+{
   guiPackages = (with pkgs; [
     yt-dlp
     kdePackages.xwaylandvideobridge
@@ -23,6 +26,7 @@ in {
     wf-recorder
     signal-desktop
     nautilus
+		gapless
   ])
   ++ lib.lists.optionals config.swaync.enable [ 
       pkgs.swaynotificationcenter 
@@ -40,10 +44,12 @@ in {
       slurp
       grim
       wl-clipboard
+      swayimg
     ])
   ++ lib.lists.optionals (config.hyprland.enable || config.sway.enable) [pkgs.swaybg]
   ++ lib.lists.optionals (config.waybar.enable || config.sway.enable || config.hyprland.enable) [pkgs.playerctl]
   ++ [ inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins ]
-  ++ [ iced-todo ];
+  ++ [ tilp2 ];
+  #++ [ iced-todo ];
 }
 

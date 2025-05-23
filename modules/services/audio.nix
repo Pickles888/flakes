@@ -4,7 +4,6 @@
   ...
 }: lib.mkIf config.audio.enable {
   security.rtkit.enable = true;
-  programs.noisetorch.enable = true;
   services.pipewire = {
       enable = true;
       alsa.enable = true;

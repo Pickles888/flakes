@@ -49,36 +49,36 @@
     	    size = 8.0;
     	  };
     	  trayOutput = "primary";
-      	  colors = {
-      	    background = "#282828";   # Gruvbox Dark background
-      	    statusline = "#ebdbb2";    # Gruvbox light text color
-      	    separator = "#7c6f64";     # Gruvbox muted gray-brown separator
-      	    focusedWorkspace = {
-      	      border = "#a89984";      # Gruvbox light beige border
-      	      background = "#3c3836";  # Gruvbox dark gray-brown background
-      	      text = "#ebdbb2";        # Gruvbox light beige text
-      	    };
-      	    activeWorkspace = {
-      	      border = "#7c6f64";      # Gruvbox muted gray-brown border
-      	      background = "#504945";  # Gruvbox dark gray-brown background
-      	      text = "#ebdbb2";        # Gruvbox light beige text
-      	    };
-      	    inactiveWorkspace = {
-      	      border = "#7c6f64";      # Gruvbox muted gray-brown border
-      	      background = "#282828";  # Gruvbox dark background
-      	      text = "#7c6f64";        # Gruvbox muted gray-brown text
-      	    };
-      	    urgentWorkspace = {
-      	      border = "#fb4934";      # Gruvbox red border
-      	      background = "#282828";  # Gruvbox dark background
-      	      text = "#ebdbb2";        # Gruvbox light beige text
-      	    };
+      	colors = {
+      		background = "#282828";   # Gruvbox Dark background
+       	    statusline = "#ebdbb2";    # Gruvbox light text color
+       	    separator = "#7c6f64";     # Gruvbox muted gray-brown separator
+       	    focusedWorkspace = {
+       	      border = "#a89984";      # Gruvbox light beige border
+       	      background = "#3c3836";  # Gruvbox dark gray-brown background
+       	      text = "#ebdbb2";        # Gruvbox light beige text
+       	    };
+       	    activeWorkspace = {
+       	      border = "#7c6f64";      # Gruvbox muted gray-brown border
+       	      background = "#504945";  # Gruvbox dark gray-brown background
+       	      text = "#ebdbb2";        # Gruvbox light beige text
+       	    };
+       	    inactiveWorkspace = {
+       	      border = "#7c6f64";      # Gruvbox muted gray-brown border
+       	      background = "#282828";  # Gruvbox dark background
+       	      text = "#7c6f64";        # Gruvbox muted gray-brown text
+       	    };
+       	    urgentWorkspace = {
+       	      border = "#fb4934";      # Gruvbox red border
+       	      background = "#282828";  # Gruvbox dark background
+       	      text = "#ebdbb2";        # Gruvbox light beige text
+       	    };
       	    bindingMode = {
-      	      border = "#fb4934";      # Gruvbox red border
-      	      background = "#282828";  # Gruvbox dark background
-      	      text = "#ebdbb2";        # Gruvbox light beige text
-      	  };  
-      	};
+       	      border = "#fb4934";      # Gruvbox red border
+      				background = "#282828";  # Gruvbox dark background
+      				text = "#ebdbb2";        # Gruvbox light beige text
+      			};  
+      		};
       }];
 
       colors = {
@@ -157,13 +157,14 @@
         "${cfg.config.modifier}+x" = "splitv";
         "${cfg.config.modifier}+f" = "fullscreen toggle";
         "${cfg.config.modifier}+a" = "focus parent";
+        "${cfg.config.modifier}+Shift+a" = "focus child"; # :P
 
         "${cfg.config.modifier}+s" = "layout stacking";
         "${cfg.config.modifier}+h" = "layout tabbed";
         "${cfg.config.modifier}+m" = "layout toggle split";
 
         "${cfg.config.modifier}+Shift+space" = "floating toggle";
-  # "${cfg.config.modifier}+space" = "focus mode_toggle"; # idk what this does
+  			"${cfg.config.modifier}+Shift+Control+space" = "focus mode_toggle"; # idk what this does !! EDIT: switches between focusing on floating and tiled (useful like once in a lifetime)
 
         "${cfg.config.modifier}+1" = "workspace number 1";
         "${cfg.config.modifier}+2" = "workspace number 2";

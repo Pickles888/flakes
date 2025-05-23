@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,14 +39,25 @@
   } @ inputs: let
     clib =
       import ./customLib/default.nix {inherit inputs home-manager;};
-  in {
+  in rec {
       nixosConfigurations = {
         NixPC =
-          clib.mkSystem "x86_64-linux" ./hosts/pc/configuration.nix {inherit inputs nixvim clib;};
+          clib.mkSystem
+          	"x86_64-linux"
+          	./hosts/pc/configuration.nix
+          	extraModules
+          	{inherit inputs nixvim clib;};
 
         NixLaptop =
-          clib.mkSystem "aarch64-linux" ./hosts/laptop/configuration.nix {inherit inputs nixvim clib;};
+          clib.mkSystem
+          	"aarch64-linux"
+          	./hosts/laptop/configuration.nix
+          	extraModules
+          	{inherit inputs nixvim clib;};
       };
+
+			extraModules = [
+			];
 
       home-managerModules.default = ./home-managerModules;
       modules.default = ./modules;

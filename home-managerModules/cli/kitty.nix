@@ -6,8 +6,8 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "JetBrainsMono Nerd Font";
-      size = osConfig.kitty.fontSize;
+    	 name = "JetBrainsMono Nerd Font";
+    	 size = osConfig.kitty.fontSize;
     };
 
     settings = {

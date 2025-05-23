@@ -8,11 +8,11 @@
     enabled = "fcitx5";
     fcitx5 = {
       addons = with pkgs; [
-	rime-data
-	fcitx5-gtk
-	fcitx5-mozc
-	fcitx5-rime
-	fcitx5-table-extra
+        rime-data
+        fcitx5-gtk
+        fcitx5-mozc
+        fcitx5-rime
+        fcitx5-table-extra
       ];
 
       waylandFrontend = true;

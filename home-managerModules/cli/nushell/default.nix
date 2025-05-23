@@ -32,13 +32,13 @@ in lib.mkIf (osConfig.shell.shell == pkgs.nushell) {
       extraEnv = lib.strings.concatStrings [extraEnv nixFunctions];
       
       shellAliases = rec {
-	c = "clear";
-	cdf = "cd ${osConfig.flakePath}";
+				c = "clear";
+				cdf = "cd ${osConfig.flakePath}";
         ez = "eza --icons -F -H --group-directories-first --git -1";
         eza = "${ez} -T";
         t = "tmux";
-	s = "superfile";
-	mpvl = "mpv --loop-playlist=inf ";
+				s = "superfile";
+				mpvl = "mpv --loop-playlist=inf ";
       } // osConfig.shell.extraAliases;
     };
 

@@ -22,10 +22,10 @@
           devices = ["nodev"];
           efiSupport = true;
           configurationLimit = 10;
-          theme = pkgs.sleek-grub-theme.override {
-            withStyle = "dark";
-            withBanner = "Welcome to ${config.hostName}";
-          };
+          #theme = pkgs.sleek-grub-theme.override {
+          #  withStyle = "dark";
+          #  withBanner = "Welcome to ${config.hostName}";
+          #};
         };
 
         timeout = 5;

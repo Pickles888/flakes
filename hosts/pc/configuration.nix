@@ -55,6 +55,9 @@
     anki-bin
     ghc
     lumafly
+    # CD STUFF
+    cdrtools
+    dvdplusrwtools
   ]) ++ [ inputs.ow-mod-man.packages."x86_64-linux".owmods-gui pkgs.mono ];
 
   networking.firewall.allowedUDPPortRanges = [

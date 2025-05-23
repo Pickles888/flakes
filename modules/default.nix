@@ -9,7 +9,7 @@
     ./ssh.nix
     ./flakePath.nix
     ./options.nix
-    
+
     ./services
     ./programs 
     ./packages
