@@ -12,7 +12,6 @@
   vm.enable = true; # enables qemu vm
   autoUpgrade.enable = true; # Automatically updates the flake every day
   kitty.fontSize = 13;
-  nvim.enable = true;
 
   musicManager.enable = true;
 
@@ -55,6 +54,10 @@
     anki-bin
     ghc
     lumafly
+    pipeline
+    (pkgs.callPackage ../../modules/packages/customPackages/tilp2.nix {}).tilp
+    protonvpn-gui
+    mangohud
     # CD STUFF
     cdrtools
     dvdplusrwtools
@@ -71,4 +74,22 @@
     "dotnet-sdk-wrapped-7.0.410" # also broken af
     "dotnet-sdk-7.0.410"
   ];
+
+  # VPN
+
+  networking.networkmanager.enable = true;
+
+   networking.wg-quick.interfaces."wg0" = {
+      autostart = false;
+      privateKeyFile = "/root/secrets/protonvpn";
+      address = [ "10.2.0.2/32" ];
+      listenPort = 51820;
+
+      # peers = [
+      #  { publicKey = cfg.endpoint.publicKey;
+      #    allowedIPs = [ "0.0.0.0/0" "::/0"];
+      #    endpoint = "${cfg.endpoint.ip}:${builtins.toString cfg.endpoint.port}";
+      #  }
+      #];
+    };
 }

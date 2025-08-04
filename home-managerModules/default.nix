@@ -9,7 +9,6 @@
     ./waybar
     ./sway.nix
     ./mpv.nix
-    ./kakoune.nix
   ];
 
   home = {

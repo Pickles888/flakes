@@ -1,9 +1,13 @@
 {
   pkgs,
   config,
-  lib
+  lib,
+  ctools,
+  inputs
 }: {
   basePackages = with pkgs; [
+    yt-dlp
+    pciutils
     eza
     cava
     ripgrep
@@ -28,7 +32,10 @@
     fzf
     unzip
     ghc
-  ] ++ lib.lists.optionals config.kakoune.enable (with pkgs;
-      [kakoune kakoune-lsp]
-    );
+  ] ++ ctools.switchList [
+    {
+      switch = config.waybar.enable;
+      pkgs = [ pkgs.jq ];
+    }
+  ];
 }

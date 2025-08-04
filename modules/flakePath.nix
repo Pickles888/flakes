@@ -2,5 +2,8 @@
   config,
   ...
 }: {
-  environment.sessionVariables.FLAKE = config.flakePath;
+  environment.sessionVariables = rec {
+    FLAKE = config.flakePath;
+    NH_FLAKE = FLAKE;
+  };
 }

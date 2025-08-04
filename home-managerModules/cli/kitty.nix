@@ -17,6 +17,10 @@
       enabled_layouts = "splits:split_axis=horizontal";
     };
 
+    keybindings = {
+			"ctrl+enter" = "launch --cwd=current --type=os-window";
+    };
+
     theme = "Gruvbox Dark";
   };
 }

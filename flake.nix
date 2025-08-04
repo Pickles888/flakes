@@ -20,44 +20,34 @@
       url = "github:ow-mods/ow-mod-man";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    plugin-markdown = {
-      url = "github:MeanderingProgrammer/markdown.nvim";
-      flake = false;
-    };
   };
 
   outputs = {
-    nixvim,
     home-manager,
+    nixpkgs,
     ...
   } @ inputs: let
-    clib =
-      import ./customLib/default.nix {inherit inputs home-manager;};
+    lib = nixpkgs.lib;
+    ctools =
+      import ./ctools/default.nix {inherit inputs home-manager lib;};
   in rec {
       nixosConfigurations = {
         NixPC =
-          clib.mkSystem
+          ctools.mkSystem
           	"x86_64-linux"
           	./hosts/pc/configuration.nix
           	extraModules
-          	{inherit inputs nixvim clib;};
+          	{inherit inputs ctools;};
 
         NixLaptop =
-          clib.mkSystem
+          ctools.mkSystem
           	"aarch64-linux"
           	./hosts/laptop/configuration.nix
           	extraModules
-          	{inherit inputs nixvim clib;};
+          	{inherit inputs ctools;};
       };
 
-			extraModules = [
-			];
+			extraModules = [];
 
       home-managerModules.default = ./home-managerModules;
       modules.default = ./modules;

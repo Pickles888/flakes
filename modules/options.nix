@@ -22,12 +22,6 @@
       description = "Enables the gui";
     };
 
-    nvim.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enables neovim";
-    };
-
     kakoune.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;

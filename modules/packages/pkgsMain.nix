@@ -2,17 +2,26 @@
   pkgs,
   lib,
   config,
+  ctools,
   inputs,
   ...
 }: let
-  guiPackages = import ./packageSections/guiPackages.nix {inherit pkgs inputs lib config;};
-  basePackages = import ./packageSections/basePackages.nix {inherit pkgs config lib;};
+  guiPackages = import ./packageSections/guiPackages.nix {inherit inputs pkgs config lib ctools;};
+  basePackages = import ./packageSections/basePackages.nix {inherit inputs pkgs config lib ctools;};
 
-  guiPackagesRemoved = lib.lists.subtractLists config.packages.remove guiPackages.guiPackages;
-  basePackagesRemoved = lib.lists.subtractLists config.packages.remove basePackages.basePackages;
+  guiPackagesCleaned = lib.lists.subtractLists config.packages.remove guiPackages.guiPackages;
+  basePackagesCleaned = lib.lists.subtractLists config.packages.remove basePackages.basePackages;
 in {
-  environment.systemPackages = [] 
-    ++ lib.lists.optionals config.packages.guiPackages.enable guiPackagesRemoved
-    ++ lib.lists.optionals config.packages.basePackages.enable basePackagesRemoved
+  environment.systemPackages = []
+    ++ (ctools.switchList [
+      {
+        switch = config.packages.guiPackages.enable;
+        pkgs = guiPackagesCleaned;
+      }
+      {
+        switch = config.packages.basePackages.enable;
+        pkgs = basePackagesCleaned;
+      }
+    ])
     ++ config.packages.extraPackages;
 }

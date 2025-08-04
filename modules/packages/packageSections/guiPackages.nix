@@ -2,18 +2,27 @@
   pkgs, 
   config, 
   lib,
-  inputs
+  inputs,
+  ctools
 }:
 let
   #iced-todo = pkgs.callPackage ../customPackages/iced_todo.nix {};
-  tilp2 = pkgs.callPackage ../customPackages/tilp2.nix {};
+  myKakoune =
+  let
+    config = pkgs.writeTextFile (rec {
+      name = "kakrc.kak";
+      destination = "/share/kak/autoload/${name}";
+      text = import ../../programs/kakoune.nix;
+    });
+  in
+  pkgs.kakoune.override {
+    plugins = with pkgs.kakounePlugins; [ config kakoune-rainbow tabs-kak kakboard fzf-kak ];
+  };
 in
 {
-  guiPackages = (with pkgs; [
-    yt-dlp
+  guiPackages = with pkgs; [
     kdePackages.xwaylandvideobridge
     firefox
-    amberol
     brightnessctl
     alsa-utils
     xdg-utils
@@ -26,30 +35,51 @@ in
     wf-recorder
     signal-desktop
     nautilus
-		gapless
+    gapless
+  ]
+  ++ (ctools.switchList [
+    {
+      switch = config.swaync.enable;
+      pkgs = [ 
+        pkgs.swaynotificationcenter 
+      ];
+    }
+    {
+      switch = config.waybar.enable;
+      pkgs = [ 
+        pkgs.waybar
+      ];
+    }
+    {
+      switch = config.hyprland.enable;
+      pkgs = (with pkgs; [
+        hyprshot
+        hyprlock
+        hypridle
+      ]);
+    }
+    {
+      switch = config.sway.enable;
+      pkgs = (with pkgs; [
+        slurp
+        grim
+        wl-clipboard
+        swayimg
+      ]);
+    }
+    {
+      switch = (config.hyprland.enable || config.sway.enable);
+      pkgs = [ pkgs.swaybg ];
+    }
+    {
+      switch = (config.waybar.enable || config.sway.enable || config.hyprland.enable);
+      pkgs = [ pkgs.playerctl ];
+    }
+    {
+      switch = config.kakoune.enable;
+      pkgs = [ myKakoune pkgs.haskellPackages.haskell-language-server pkgs.kakoune-lsp ];
+    }
   ])
-  ++ lib.lists.optionals config.swaync.enable [ 
-      pkgs.swaynotificationcenter 
-    ]
-  ++ lib.lists.optionals config.waybar.enable (with pkgs; [ 
-      waybar
-      jq # required by waybar/cava.sh
-    ])
-  ++ lib.lists.optionals config.hyprland.enable (with pkgs; [
-      hyprshot
-      hyprlock
-      hypridle
-    ])
-  ++ lib.lists.optionals config.sway.enable (with pkgs; [
-      slurp
-      grim
-      wl-clipboard
-      swayimg
-    ])
-  ++ lib.lists.optionals (config.hyprland.enable || config.sway.enable) [pkgs.swaybg]
-  ++ lib.lists.optionals (config.waybar.enable || config.sway.enable || config.hyprland.enable) [pkgs.playerctl]
-  ++ [ inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins ]
-  ++ [ tilp2 ];
-  #++ [ iced-todo ];
+  ++ [ inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins ];
 }
 
